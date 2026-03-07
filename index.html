@@ -11,13 +11,13 @@
     
     <style>
         :root {
-            --prussian-blue: #122435;
-            --indigo-dye: #224766;
-            --sinopia-red: #CC361E;
-            --anti-flash-white: #EFEFEF;
-            --silver: #B3B3B3;
-            --font-heading: 'Apple Garamond', 'Garamond', 'Georgia', serif;
-            --font-body: 'Roboto', sans-serif;
+            --prussian-blue: #122435; 
+            --indigo-dye: #224766;    
+            --sinopia-red: #CC361E;   
+            --anti-flash-white: #EFEFEF; 
+            --silver: #B3B3B3;        
+            --font-heading: 'Apple Garamond', 'Garamond', 'Georgia', serif; 
+            --font-body: 'Roboto', sans-serif; 
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,7 +59,7 @@
             color: var(--anti-flash-white);
         }
 
-        /* --- LANDING --- */
+        /* --- 3. LANDING PAGE --- */
         #landing {
             height: 100vh;
             display: flex;
@@ -91,7 +91,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- GATEWAY --- */
+        /* --- 4. GATEWAY --- */
         #gateway {
             display: none;
             height: 100vh;
@@ -120,39 +120,43 @@
 
         .hint { font-size: 0.8rem; color: var(--silver); margin-top: 15px; }
 
-        /* --- MAIN PAGE --- */
+        /* --- 5. MAIN PAGE --- */
         #main-page { display: none; }
 
-        /* REQUEST: SEKSI HAPPY BIRTHDAY BESAR */
-        .birthday-headline {
-            height: 60vh;
+        /* SEKSI BARU: HERO BIRTHDAY (Vibe 'WANDER' layout) */
+        .hero-birthday {
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
+            flex-direction: column;
+            background: linear-gradient(rgba(18, 36, 53, 0.6), rgba(18, 36, 53, 0.6)), url('https://via.placeholder.com/1920x1080/122435/EFEFEF?text=HERO+FRAME+ZAIN');
+            background-size: cover;
+            background-position: center;
             text-align: center;
-            padding: 0 10%;
+            color: white;
         }
 
-        .birthday-headline h1 {
-            font-size: 5rem;
-            color: var(--prussian-blue);
-            line-height: 1;
-        }
-
-        .birthday-headline span {
-            display: block;
-            color: var(--sinopia-red);
-            font-family: var(--font-body);
-            font-size: 1rem;
+        .hero-birthday h1 {
+            font-size: 8rem; /* Ukuran besar ala WANDER */
+            letter-spacing: -0.2rem;
+            line-height: 0.9;
             text-transform: uppercase;
-            letter-spacing: 0.5rem;
+            font-family: var(--font-body);
+            font-weight: 700;
             margin-bottom: 20px;
+        }
+
+        .hero-birthday p {
+            font-size: 1.2rem;
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+            font-weight: 300;
         }
 
         /* INTRODUCTION */
         .introduction {
-            padding: 100px 10%;
+            padding: 150px 10% 100px 10%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
@@ -309,12 +313,10 @@
 
     <section id="main-page">
         
-        <div class="birthday-headline">
-            <div>
-                <span>Celebration</span>
-                <h1>Happy 26th Birthday Zain</h1>
-                <button class="btn-editorial" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">Continue</button>
-            </div>
+        <div class="hero-birthday">
+            <p>Happy 26th Birthday</p>
+            <h1>ZAIN.</h1>
+            <button class="btn-editorial" style="border-color: white; color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">Scroll to Explore</button>
         </div>
 
         <div class="introduction" id="intro-anchor">
