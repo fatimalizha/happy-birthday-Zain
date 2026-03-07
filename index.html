@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAIN | THE ODYSSEY AT 21</title>
+    <title>ZAIN | THE ODYSSEY AT 26</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. RESET & VARIABLE COLORS (Berdasarkan image_15.png) --- */
         :root {
-            --prussian-blue: #122435; /* Navy Gelap - Maskulin */
-            --indigo-dye: #224766;    /* Navy Terang - Aksen */
-            --sinopia-red: #CC361E;   /* Merah Bata - Kontras */
-            --anti-flash-white: #EFEFEF; /* Background Clean */
-            --silver: #B3B3B3;        /* Teks Sekunder */
-            
-            /* Font Stacking */
-            --font-heading: 'Apple Garamond', 'Garamond', 'Georgia', serif; /* Serif Klasik */
-            --font-body: 'Roboto', sans-serif; /* Sans-serif Modern */
+            --prussian-blue: #122435;
+            --indigo-dye: #224766;
+            --sinopia-red: #CC361E;
+            --anti-flash-white: #EFEFEF;
+            --silver: #B3B3B3;
+            --font-heading: 'Apple Garamond', 'Garamond', 'Georgia', serif;
+            --font-body: 'Roboto', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,18 +31,16 @@
             overflow-x: hidden;
         }
 
-        /* Typography Mapping */
         h1, h2, h3, .serif-text {
             font-family: var(--font-heading);
             font-weight: 400;
-            text-transform: none; /* Garamond lebih cantik natural */
+            text-transform: none;
         }
 
         p, button, .sans-text {
             font-family: var(--font-body);
         }
 
-        /* --- 2. GLOBAL COMPONENTS --- */
         .btn-editorial {
             padding: 12px 30px;
             background: transparent;
@@ -64,7 +59,7 @@
             color: var(--anti-flash-white);
         }
 
-        /* --- 3. LANDING PAGE (Vibe image_13.png & image_14.png) --- */
+        /* --- LANDING --- */
         #landing {
             height: 100vh;
             display: flex;
@@ -85,7 +80,7 @@
             text-transform: uppercase;
             color: var(--silver);
             margin-bottom: 10px;
-            font-family: var(--font-body); /* Roboto tipis buat sub-header */
+            font-family: var(--font-body);
             font-weight: 100;
         }
 
@@ -96,7 +91,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- 4. GATEWAY (Tetap Gelap) --- */
+        /* --- GATEWAY --- */
         #gateway {
             display: none;
             height: 100vh;
@@ -125,12 +120,39 @@
 
         .hint { font-size: 0.8rem; color: var(--silver); margin-top: 15px; }
 
-        /* --- 5. MAIN PAGE --- */
+        /* --- MAIN PAGE --- */
         #main-page { display: none; }
 
-        /* SEKSI BARU: INTRODUCTION (Vibe image_13.png layout) */
+        /* REQUEST: SEKSI HAPPY BIRTHDAY BESAR */
+        .birthday-headline {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .birthday-headline h1 {
+            font-size: 5rem;
+            color: var(--prussian-blue);
+            line-height: 1;
+        }
+
+        .birthday-headline span {
+            display: block;
+            color: var(--sinopia-red);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* INTRODUCTION */
         .introduction {
-            padding: 150px 10% 100px 10%;
+            padding: 100px 10%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
@@ -140,7 +162,6 @@
 
         .intro-image {
             position: relative;
-            /* Placeholder foto Zain, nanti ganti LINK_FOTO_ZAIN_1 */
             background-image: url('https://via.placeholder.com/600x800/122435/EFEFEF?text=ZAIN+PHOTO');
             background-size: cover;
             background-position: center;
@@ -148,7 +169,6 @@
             border: 1px solid var(--silver);
         }
         
-        /* Aksen kotak warna di belakang foto (vibe image_13.png) */
         .intro-image::before {
             content: '';
             position: absolute;
@@ -184,10 +204,10 @@
             margin-bottom: 30px;
         }
 
-        /* THE CHAPTERS (Grid Menu - Vibe image_14.png card layout) */
+        /* CHAPTERS */
         .chapters {
             padding: 100px 10%;
-            background-color: white; /* Kontras dengan bg intro */
+            background-color: white;
         }
 
         .section-header { text-align: center; margin-bottom: 80px; }
@@ -196,7 +216,7 @@
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2x2 grid lebih clean */
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
@@ -236,7 +256,7 @@
             color: var(--silver);
         }
 
-        /* --- 6. MODALS & AUDIO (Visual Update) --- */
+        /* MODALS */
         .modal {
             display: none;
             position: fixed;
@@ -247,7 +267,7 @@
             padding: 60px 40px;
             z-index: 100;
             text-align: center;
-            border-left: 3px solid var(--sinopia-red); /* Aksen samping */
+            border-left: 3px solid var(--sinopia-red);
         }
 
         .modal h3 { font-size: 2rem; color: var(--prussian-blue); margin-bottom: 20px; }
@@ -257,7 +277,7 @@
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 53, 0.9); /* Pake warna prussian blue transparan */
+            background: rgba(18, 36, 53, 0.9);
             z-index: 99;
         }
 
@@ -275,7 +295,7 @@
     <section id="landing">
         <div class="landing-content">
             <h1>A little something for you</h1>
-            <h2>The Odyssey of Zain at Twenty One</h2>
+            <h2>The Odyssey of Zain at Twenty Six</h2>
             <button class="btn-editorial" onclick="showGateway()">Start Journey</button>
         </div>
     </section>
@@ -284,24 +304,32 @@
         <h2>Enter Access Code</h2>
         <input type="password" id="passInput" class="pass-input" placeholder="0000" maxlength="4">
         <button class="btn-editorial" style="border-color: white; color: white;" onclick="checkPass()">Unlock</button>
-        <p id="hintText" class="hint" style="display:none;">Hint: Tahun ini dia genap 21 tahun...</p>
+        <p id="hintText" class="hint" style="display:none;">Hint: Tahun ini dia genap 26 tahun...</p>
     </section>
 
     <section id="main-page">
         
-        <div class="introduction">
+        <div class="birthday-headline">
+            <div>
+                <span>Celebration</span>
+                <h1>Happy 26th Birthday Zain</h1>
+                <button class="btn-editorial" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">Continue</button>
+            </div>
+        </div>
+
+        <div class="introduction" id="intro-anchor">
             <div class="intro-image"></div>
             
             <div class="intro-text">
                 <h1>Zain.</h1>
-                <h2 class="subtitle">A Portrait at 21</h2>
+                <h2 class="subtitle">A Portrait at 26</h2>
                 <p class="description sans-text">
                     Dia adalah definisi dari kehangatan yang bertemu dengan kekuatan. Zain bukan sekadar nama, tapi sebuah cerita tentang ambisi yang tenang dan keseruan yang tak terduga. Di balik tawa renyahnya, ada sosok yang sangat maskulin, memimpin dengan prinsip, namun selalu punya ruang untuk kepedulian yang tulus.
                 </p>
                 <p class="description sans-text" style="color: var(--silver); font-weight: 100;">
                     Ini adalah perayaan kecil untuknya, seorang pria hangat, seru, dan sangat maskulin yang kami banggakan.
                 </p>
-                <button class="btn-editorial" onclick="document.getElementById('chapters').scrollIntoView()">Explore His Chapters</button>
+                <button class="btn-editorial" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
             </div>
         </div>
 
@@ -362,11 +390,10 @@
 
         function checkPass() {
             const pass = document.getElementById('passInput').value;
-            // Password tetep 2026 ya tim
             if (pass === '2026') {
                 document.getElementById('gateway').style.display = 'none';
                 document.getElementById('main-page').style.display = 'block';
-                document.getElementById('bgMusic').play(); // Play music
+                document.getElementById('bgMusic').play();
             } else {
                 alert('Wrong code!');
                 document.getElementById('hintText').style.display = 'block';
