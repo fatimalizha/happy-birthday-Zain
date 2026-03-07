@@ -3,258 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD! | Special Project</title>
+    <title>HBD Zain | 21</title>
     <style>
         :root {
-            --black: #1a1a1a;
+            --black: #0a0a0a;
             --white: #ffffff;
-            --red: #bc2122;
-            --navy: #14213d;
-            --gray: #f4f4f4;
+            --red: #9e1b1b;
+            --navy: #0d1b2a;
         }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+        body {
             background-color: var(--black);
             color: var(--white);
-            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
             overflow-x: hidden;
         }
 
-        /* --- LANDING PAGE --- */
-        #landing {
+        /* LANDING PAGE - MINIMALIST */
+        .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            background: radial-gradient(circle, #2c2c2c 0%, #1a1a1a 100%);
-        }
-
-        .greeting-text {
-            font-size: 2.5rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-
-        .btn-start {
-            padding: 15px 40px;
-            background: transparent;
-            border: 1px solid var(--white);
-            color: var(--white);
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .btn-start:hover {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        /* --- PASSCODE SECTION --- */
-        #gateway {
-            display: none;
-            height: 100vh;
             justify-content: center;
-            align-items: center;
             flex-direction: column;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('LINK_FOTO_KOLASE_KAMU');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.8rem;
+            font-weight: 200;
+            text-transform: uppercase;
+        }
+
+        /* PASSCODE GATE */
+        .gate {
             background-color: var(--navy);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
         .pass-input {
             background: transparent;
             border: none;
-            border-bottom: 2px solid var(--red);
+            border-bottom: 1px solid var(--white);
             color: white;
-            font-size: 2rem;
+            font-size: 3rem;
             text-align: center;
+            width: 200px;
             outline: none;
-            margin-bottom: 10px;
+            font-weight: 100;
         }
 
-        .hint {
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-top: 10px;
+        /* COLLAGE SECTION */
+        .collage-container {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
 
-        /* --- MAIN PAGE --- */
-        #main-page {
-            display: none;
-            padding: 50px 20px;
+        .photo-item {
+            background: #111;
+            height: 400px;
+            border: 1px solid #222;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .photo-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* THE MISSING PIECE */
+        .puzzle-section {
             background-color: var(--white);
             color: var(--black);
-            min-height: 100vh;
-        }
-
-        .main-header {
+            padding: 100px 0;
             text-align: center;
-            margin-bottom: 80px;
         }
 
-        .main-header h1 {
-            font-size: 4rem;
-            color: var(--red);
-            margin: 0;
-        }
-
-        .main-header p {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            color: var(--navy);
-        }
-
-        /* MENU GRID */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .menu-item {
-            height: 200px;
-            border: 2px solid var(--black);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-item:hover {
-            background-color: var(--black);
-            color: var(--white);
-            transform: translateY(-5px);
-        }
-
-        /* MODAL / POPUP */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 500px;
-            background: white;
-            padding: 40px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
-            z-index: 100;
-            text-align: center;
-            border-top: 5px solid var(--red);
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 99;
-        }
-
-        .puzzle-box {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
+        .missing-box {
+            width: 300px;
+            height: 300px;
             border: 2px dashed #ccc;
+            margin: 40px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f9f9f9;
+            background: #f9f9f9;
+            font-style: italic;
+            color: #999;
         }
     </style>
 </head>
 <body>
-
-    <section id="landing">
-        <div class="greeting-text">A Little Something For You.</div>
-        <button class="btn-start" onclick="showGateway()">Enter</button>
-    </section>
-
-    <section id="gateway">
-        <h2>Enter Passcode</h2>
-        <input type="password" id="passInput" class="pass-input" placeholder="0000" maxlength="4">
-        <button class="btn-start" onclick="checkPass()">Unlock</button>
-        <p id="hintText" class="hint" style="display:none;">Hint: Tahun ulang tahunnya sekarang...</p>
-    </section>
-
-    <section id="main-page">
-        <div class="main-header">
-            <h1>HAPPY BIRTHDAY</h1>
-            <p>Cheers to another great year!</p>
-        </div>
-
-        <div class="menu-grid">
-            <div class="menu-item" onclick="window.open('LINK_SPOTIFY_KAMU', '_blank')">Playlist</div>
-            <div class="menu-item" onclick="alert('Buka gallery foto kamu di sini!')">Moments</div>
-            <div class="menu-item" onclick="showModal('message')">Message</div>
-            <div class="menu-item" onclick="showModal('gift')">Gift</div>
-        </div>
-    </section>
-
-    <div class="overlay" id="overlay" onclick="closeModal()"></div>
-    
-    <div class="modal" id="modal-message">
-        <h3>A Message for You</h3>
-        <p>"Selamat ulang tahun! Makasih udah jadi temen yang seru selama ini..."</p>
-        <button onclick="closeModal()">Close</button>
+    <div class="hero" id="hero">
+        <h1>A Gift for Zain</h1>
+        <button onclick="document.getElementById('gate').scrollIntoView()">Explore</button>
     </div>
-
-    <div class="modal" id="modal-gift">
-        <h3>Your Gift</h3>
-        <div class="puzzle-box">
-            <p style="color: #999;">[Missing Piece]</p>
-        </div>
-        <p>Uh oh, looks like one piece is missing... and I have it.</p>
-        <p><strong>See u later!</strong></p>
-        <button onclick="closeModal()">Close</button>
-    </div>
-
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        function showGateway() {
-            document.getElementById('landing').style.display = 'none';
-            document.getElementById('gateway').style.display = 'flex';
-        }
-
-        function checkPass() {
-            const pass = document.getElementById('passInput').value;
-            // Ganti '2026' dengan tahun yang kamu mau
-            if (pass === '2026') {
-                document.getElementById('gateway').style.display = 'none';
-                document.getElementById('main-page').style.display = 'block';
-                document.getElementById('bgMusic').play(); // Play music
-            } else {
-                alert('Wrong code!');
-                document.getElementById('hintText').style.display = 'block';
-            }
-        }
-
-        function showModal(type) {
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('modal-' + type).style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('overlay').style.display = 'none';
-            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
-        }
-    </script>
-</body>
+    </body>
 </html>
