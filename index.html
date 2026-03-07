@@ -306,9 +306,9 @@
 
     <section id="gateway">
         <h2>Enter Access Code</h2>
-        <input type="password" id="passInput" class="pass-input" placeholder="0000" maxlength="4">
+        <input type="password" id="passInput" class="pass-input" placeholder="000000" maxlength="6">
         <button class="btn-editorial" style="border-color: white; color: white;" onclick="checkPass()">Unlock</button>
-        <p id="hintText" class="hint" style="display:none;">Hint: He turns 26 this year...</p>
+        <p id="hintText" class="hint" style="display:none;">Hint: well u are old now whopss </p>
     </section>
 
     <section id="main-page">
@@ -316,7 +316,7 @@
         <div class="hero-birthday">
             <p>Happy 26th Birthday</p>
             <h1>ZAIN.</h1>
-            <button class="btn-editorial" style="border-color: white; color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">Scroll to Explore</button>
+            <button class="btn-editorial" style="border-color: white; color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
         </div>
 
         <div class="introduction" id="intro-anchor">
@@ -344,7 +344,7 @@
             <div class="menu-grid">
                 <div class="menu-item" onclick="window.open('LINK_SPOTIFY_KAMU', '_blank')">
                     <h3>Playlist</h3>
-                    <p>His Signature Sounds</p>
+                    <p>The sound that's reminds me of u</p>
                 </div>
                 <div class="menu-item" onclick="alert('Open your photo gallery here!')">
                     <h3>Moments</h3>
@@ -352,7 +352,7 @@
                 </div>
                 <div class="menu-item" onclick="showModal('message')">
                     <h3>Message</h3>
-                    <p>Words From Us To Him</p>
+                    <p>Words From Me</p>
                 </div>
                 <div class="menu-item" onclick="showModal('gift')">
                     <h3>Gift</h3>
@@ -392,7 +392,7 @@
 
         function checkPass() {
             const pass = document.getElementById('passInput').value;
-            if (pass === '2026') {
+            if (pass === '160426') {
                 document.getElementById('gateway').style.display = 'none';
                 document.getElementById('main-page').style.display = 'block';
                 document.getElementById('bgMusic').play();
