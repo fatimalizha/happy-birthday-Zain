@@ -48,7 +48,6 @@
             letter-spacing: 0.15rem;
             font-size: 0.75rem;
             margin-top: 20px;
-            /* EDIT: Lebih smooth */
             border-radius: 8px;
         }
 
@@ -100,7 +99,6 @@
         /* --- MAIN PAGE --- */
         #main-page { display: none; }
 
-        /* EDIT: Background Alam Hijau Estetik */
         .hero-birthday {
             height: 100vh;
             display: flex;
@@ -143,12 +141,10 @@
             background-position: center;
             height: 70vh;
             border: 1px solid var(--silver);
-            /* EDIT: Border radius lebih smooth */
             border-radius: 20px;
             overflow: hidden;
         }
 
-        /* EDIT: Stat Bar Jadi Lebih Tebal & Berisi */
         .stat-bar-bg { 
             width: 100%; 
             height: 12px; 
@@ -175,7 +171,6 @@
             letter-spacing: 0.1rem; 
             display: inline-block; 
             margin: 0 5px 10px 0;
-            /* EDIT: Lebih melengkung */
             border-radius: 50px;
         }
 
@@ -201,7 +196,6 @@
             transition: all 0.4s ease;
             padding: 20px;
             text-align: center;
-            /* EDIT: Melengkung smooth */
             border-radius: 15px;
         }
 
@@ -218,8 +212,41 @@
             text-align: center;
             border-left: 6px solid var(--sinopia-red);
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            /* EDIT: Smooth corner */
             border-radius: 0 15px 15px 0;
+        }
+
+        /* EDIT: CSS UNTUK BUKU MESSAGE */
+        .book-container {
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .book-page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .book-page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .nav-link {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: var(--sinopia-red);
+            cursor: pointer;
+            font-weight: 700;
         }
 
         .overlay {
@@ -236,7 +263,6 @@
             border: 1px dashed var(--silver);
             display: flex; align-items: center; justify-content: center;
             background-color: var(--anti-flash-white);
-            /* EDIT: Lebih smooth */
             border-radius: 12px;
         }
 
@@ -361,7 +387,27 @@
     
     <div class="modal" id="modal-message">
         <h3>A Message for You</h3>
-        <p style="margin: 20px 0; font-size: 0.95rem;">"Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"</p>
+        <div class="book-container">
+            <div class="book-page active" id="page-1">
+                <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8;">
+                    "Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"
+                </p>
+            </div>
+            <div class="book-page" id="page-2">
+                <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8; text-align: left;">
+                    HI HELLO, how r u??????<br><br>
+                    how does it feels like to live at your early 26?<br><br>
+                    someone said, the human brain has completed development at the age of 25. Now u complete all that phases but how can u still be childish?!?!?
+                </p>
+            </div>
+        </div>
+
+        <div class="page-nav">
+            <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility: hidden;">&larr; Back</span>
+            <span style="font-size: 0.7rem; color: var(--silver);" id="pageIndicator">1 / 2</span>
+            <span class="nav-link" id="nextBtn" onclick="changePage(1)">Next &rarr;</span>
+        </div>
+
         <button class="btn-editorial" onclick="closeModal()">Close</button>
     </div>
 
@@ -376,6 +422,9 @@
     </div>
 
     <script>
+        let currentMsgPage = 1;
+        const totalPages = 2;
+
         function showGateway() {
             document.getElementById('landing').style.display = 'none';
             document.getElementById('gateway').style.display = 'flex';
@@ -401,9 +450,30 @@
             }
         }
 
+        // EDIT: FUNGSI PINDAH HALAMAN BUKU
+        function changePage(step) {
+            document.getElementById(`page-${currentMsgPage}`).classList.remove('active');
+            currentMsgPage += step;
+            document.getElementById(`page-${currentMsgPage}`).classList.add('active');
+
+            // Update UI
+            document.getElementById('pageIndicator').innerText = `${currentMsgPage} / ${totalPages}`;
+            document.getElementById('prevBtn').style.visibility = currentMsgPage === 1 ? 'hidden' : 'visible';
+            document.getElementById('nextBtn').style.visibility = currentMsgPage === totalPages ? 'hidden' : 'visible';
+        }
+
         function showModal(type) {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('modal-' + type).style.display = 'block';
+            // Reset ke halaman 1 tiap kali modal dibuka
+            if(type === 'message') {
+                currentMsgPage = 1;
+                document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
+                document.getElementById('page-1').classList.add('active');
+                document.getElementById('pageIndicator').innerText = `1 / ${totalPages}`;
+                document.getElementById('prevBtn').style.visibility = 'hidden';
+                document.getElementById('nextBtn').style.visibility = 'visible';
+            }
         }
 
         function closeModal() {
