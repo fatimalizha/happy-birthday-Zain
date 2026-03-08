@@ -48,6 +48,8 @@
             letter-spacing: 0.15rem;
             font-size: 0.75rem;
             margin-top: 20px;
+            /* EDIT: Lebih smooth */
+            border-radius: 8px;
         }
 
         .btn-editorial:hover {
@@ -136,17 +138,46 @@
 
         .intro-image {
             position: relative;
-            /* GANTI LINK FOTO ZAIN DISINI */
             background-image: url('zain 1.jpeg');
             background-size: cover;
             background-position: center;
             height: 70vh;
             border: 1px solid var(--silver);
+            /* EDIT: Border radius lebih smooth */
+            border-radius: 20px;
+            overflow: hidden;
         }
 
-        .stat-bar-bg { width: 100%; height: 4px; background: #ddd; position: relative; margin-bottom: 20px; }
-        .stat-bar-fill { height: 100%; background: var(--prussian-blue); position: absolute; left: 0; top: 0; }
-        .trait-badge { border: 1px solid var(--silver); padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1rem; display: inline-block; margin: 0 5px 10px 0;}
+        /* EDIT: Stat Bar Jadi Lebih Tebal & Berisi */
+        .stat-bar-bg { 
+            width: 100%; 
+            height: 12px; 
+            background: #ddd; 
+            position: relative; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            overflow: hidden;
+        }
+        .stat-bar-fill { 
+            height: 100%; 
+            background: var(--prussian-blue); 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            border-radius: 10px;
+        }
+
+        .trait-badge { 
+            border: 1px solid var(--silver); 
+            padding: 8px 16px; 
+            font-size: 0.65rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1rem; 
+            display: inline-block; 
+            margin: 0 5px 10px 0;
+            /* EDIT: Lebih melengkung */
+            border-radius: 50px;
+        }
 
         /* CHAPTERS */
         .chapters { padding: 80px 10%; background-color: white; }
@@ -170,6 +201,8 @@
             transition: all 0.4s ease;
             padding: 20px;
             text-align: center;
+            /* EDIT: Melengkung smooth */
+            border-radius: 15px;
         }
 
         /* MODALS */
@@ -183,8 +216,10 @@
             padding: 40px 30px;
             z-index: 1000;
             text-align: center;
-            border-left: 4px solid var(--sinopia-red);
+            border-left: 6px solid var(--sinopia-red);
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            /* EDIT: Smooth corner */
+            border-radius: 0 15px 15px 0;
         }
 
         .overlay {
@@ -201,6 +236,8 @@
             border: 1px dashed var(--silver);
             display: flex; align-items: center; justify-content: center;
             background-color: var(--anti-flash-white);
+            /* EDIT: Lebih smooth */
+            border-radius: 12px;
         }
 
         @media (max-width: 768px) {
@@ -240,7 +277,7 @@
 
         <div class="introduction" id="intro-anchor">
             <div class="intro-image">
-                <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 12px; font-size: 0.6rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700;">
+                <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 12px; font-size: 0.6rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700; border-radius: 5px;">
                     26 Years of Excellence
                 </div>
             </div>
@@ -264,6 +301,7 @@
                         <span>⭐⭐⭐⭐⭐</span>
                     </div>
                     <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                    
                     <div style="margin-bottom: 30px;">
                         <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
                            <span>Ambition Drive</span>
@@ -279,7 +317,7 @@
                         <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
                     </div>
 
-                    <div style="background: white; padding: 20px; border-left: 4px solid var(--indigo-dye); box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05);">
+                    <div style="background: white; padding: 25px; border-left: 6px solid var(--indigo-dye); border-radius: 0 15px 15px 0; box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05);">
                         <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1rem; color: var(--indigo-dye); font-weight: 700;">Achievement Unlocked</p>
                         <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--prussian-blue); margin: 5px 0;">BUSINESS OWNER ✨</h3>
                         <p style="font-size: 0.8rem; color: var(--silver);">
@@ -346,7 +384,6 @@
         function checkPass() {
             const pass = document.getElementById('passInput').value;
             if (pass === '160426') {
-                // EDIT: Efek Confetti
                 confetti({
                     particleCount: 150,
                     spread: 70,
