@@ -37,10 +37,7 @@
             text-transform: none;
         }
 
-        p, button, .sans-text {
-            font-family: var(--font-body);
-        }
-
+        /* --- UI COMPONENTS --- */
         .btn-editorial {
             padding: 12px 30px;
             background: transparent;
@@ -59,14 +56,14 @@
             color: var(--anti-flash-white);
         }
 
-        /* --- 3. LANDING PAGE --- */
+        /* --- 1. LANDING PAGE --- */
         #landing {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--anti-flash-white);
-            padding: 40px;
+            padding: 20px;
         }
 
         .landing-content {
@@ -75,8 +72,8 @@
         }
 
         .landing-content h1 {
-            font-size: 1.2rem;
-            letter-spacing: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.3rem;
             text-transform: uppercase;
             color: var(--silver);
             margin-bottom: 10px;
@@ -85,13 +82,13 @@
         }
 
         .landing-content h2 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 3.5rem);
             color: var(--prussian-blue);
             line-height: 1.1;
             margin-bottom: 30px;
         }
 
-        /* --- 4. GATEWAY --- */
+        /* --- 2. GATEWAY --- */
         #gateway {
             display: none;
             height: 100vh;
@@ -100,46 +97,47 @@
             flex-direction: column;
             background-color: var(--prussian-blue);
             color: var(--anti-flash-white);
+            padding: 20px;
         }
 
-        #gateway h2 { color: var(--silver); font-size: 1rem; letter-spacing: 0.3rem; text-transform: uppercase; margin-bottom: 30px;}
+        #gateway h2 { color: var(--silver); font-size: 0.8rem; letter-spacing: 0.3rem; text-transform: uppercase; margin-bottom: 30px; text-align: center;}
 
         .pass-input {
             background: transparent;
             border: none;
             border-bottom: 1px solid var(--sinopia-red);
             color: white;
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 10vw, 4rem);
             text-align: center;
             outline: none;
             margin-bottom: 20px;
-            width: 400px;
+            width: 100%;
+            max-width: 350px;
             font-weight: 100;
-            font-family: var(--font-body);
         }
 
-        .hint { font-size: 0.8rem; color: var(--silver); margin-top: 15px; }
+        .hint { font-size: 0.75rem; color: var(--silver); margin-top: 15px; }
 
-        /* --- 5. MAIN PAGE --- */
+        /* --- 3. MAIN PAGE --- */
         #main-page { display: none; }
 
-        /* HERO BIRTHDAY */
         .hero-birthday {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background: linear-gradient(rgba(18, 36, 53, 0.6), rgba(18, 36, 53, 0.6)), url('https://via.placeholder.com/1920x1080/122435/EFEFEF?text=HERO+FRAME+ZAIN');
+            background: linear-gradient(rgba(18, 36, 53, 0.6), rgba(18, 36, 53, 0.6)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             text-align: center;
             color: white;
+            padding: 20px;
         }
 
         .hero-birthday h1 {
-            font-size: 8rem; 
-            letter-spacing: -0.2rem;
+            font-size: clamp(3.5rem, 15vw, 8rem);
+            letter-spacing: -0.1rem;
             line-height: 0.9;
             text-transform: uppercase;
             font-family: var(--font-body);
@@ -148,18 +146,18 @@
         }
 
         .hero-birthday p {
-            font-size: 1.2rem;
+            font-size: clamp(0.8rem, 3vw, 1.2rem);
             letter-spacing: 0.3rem;
             text-transform: uppercase;
             font-weight: 300;
         }
 
-        /* REVISED INTRODUCTION SECTION */
+        /* INTRODUCTION (RESPONSIVE GRID) */
         .introduction {
-            padding: 150px 10% 100px 10%;
+            padding: 80px 10%;
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
+            gap: 40px;
             align-items: start;
             background-color: var(--anti-flash-white);
         }
@@ -169,101 +167,53 @@
             background-image: url('https://via.placeholder.com/600x800/122435/EFEFEF?text=ZAIN+PHOTO');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 70vh;
             border: 1px solid var(--silver);
-        }
-        
-        .intro-image::before {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 200px;
-            height: 200px;
-            background-color: var(--indigo-dye);
-            z-index: -1;
         }
 
         .intro-text h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             color: var(--sinopia-red);
             margin-bottom: 10px;
-            line-height: 1;
-        }
-
-        .intro-text h2.subtitle {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4rem;
-            color: var(--silver);
-            margin-bottom: 20px;
-            font-family: var(--font-body);
-            font-weight: 700;
         }
 
         .intro-text p.description {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--prussian-blue);
-            max-width: 500px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
-        /* STATS STYLING */
-        .stat-bar-bg { width: 100%; height: 4px; background: #ddd; position: relative; }
+        /* STATS & BADGES */
+        .stat-bar-bg { width: 100%; height: 4px; background: #ddd; position: relative; margin-bottom: 20px; }
         .stat-bar-fill { height: 100%; background: var(--prussian-blue); position: absolute; left: 0; top: 0; }
-        .trait-badge { border: 1px solid var(--silver); padding: 6px 15px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1rem; display: inline-block; margin-right: 8px; margin-bottom: 10px;}
+        .trait-badge { border: 1px solid var(--silver); padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1rem; display: inline-block; margin: 0 5px 10px 0;}
 
-        /* CHAPTERS */
-        .chapters {
-            padding: 100px 10%;
-            background-color: white;
-        }
-
-        .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-size: 2.5rem; color: var(--prussian-blue); }
-        .section-header p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.2rem; color: var(--silver); }
-
+        /* CHAPTERS GRID */
+        .chapters { padding: 80px 10%; background-color: white; }
+        .section-header { text-align: center; margin-bottom: 50px; }
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .menu-item {
             background-color: var(--anti-flash-white);
-            height: 250px;
+            min-height: 180px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: all 0.5s ease;
-            border: 1px solid transparent;
-            padding: 30px;
+            transition: all 0.4s ease;
+            padding: 20px;
             text-align: center;
         }
 
-        .menu-item:hover {
-            border-color: var(--sinopia-red);
-            transform: translateY(-5px);
-            background-color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .menu-item h3 {
-            font-size: 1.8rem;
-            color: var(--prussian-blue);
-            margin-bottom: 10px;
-        }
-
-        .menu-item p {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            color: var(--silver);
-        }
+        .menu-item h3 { font-size: 1.4rem; margin-bottom: 8px; }
+        .menu-item p { font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; }
 
         /* MODALS */
         .modal {
@@ -271,28 +221,39 @@
             position: fixed;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%; max-width: 500px;
+            width: 90%; max-width: 450px;
             background: white;
-            padding: 60px 40px;
-            z-index: 100;
+            padding: 40px 30px;
+            z-index: 1000;
             text-align: center;
-            border-left: 3px solid var(--sinopia-red);
+            border-left: 4px solid var(--sinopia-red);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
-
-        .modal h3 { font-size: 2rem; color: var(--prussian-blue); margin-bottom: 20px; }
-        .modal p { color: var(--prussian-blue); margin-bottom: 30px; font-size: 1rem;}
 
         .overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 53, 0.9);
-            z-index: 99;
+            background: rgba(18, 36, 53, 0.95);
+            z-index: 999;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .introduction {
+                grid-template-columns: 1fr;
+                padding: 60px 5%;
+            }
+            .intro-image { height: 50vh; order: -1; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .intro-text { text-align: center; }
+            .intro-text p.description { margin: 0 auto 25px auto; }
+            .hero-birthday h1 { line-height: 1.1; }
         }
 
         .puzzle-box {
-            width: 200px; height: 200px;
-            margin: 20px auto 40px auto;
+            width: 150px; height: 150px;
+            margin: 20px auto;
             border: 1px dashed var(--silver);
             display: flex; align-items: center; justify-content: center;
             background-color: var(--anti-flash-white);
@@ -300,6 +261,10 @@
     </style>
 </head>
 <body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/04/Happy-Birthday-Music-Box.mp3" type="audio/mpeg">
+    </audio>
 
     <section id="landing">
         <div class="landing-content">
@@ -317,7 +282,6 @@
     </section>
 
     <section id="main-page">
-        
         <div class="hero-birthday">
             <p>Happy 26th Birthday</p>
             <h1>ZAIN.</h1>
@@ -326,69 +290,55 @@
 
         <div class="introduction" id="intro-anchor">
             <div class="intro-image">
-                <div style="position: absolute; top: 20px; right: 20px; background: var(--sinopia-red); color: white; padding: 10px 15px; font-size: 0.7rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700;">
+                <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 12px; font-size: 0.6rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700;">
                     26 Years of Excellence
                 </div>
             </div>
             
             <div class="intro-text">
-                <h2 class="subtitle">A Portrait at 26</h2>
+                <h2 class="subtitle" style="font-size: 0.7rem; letter-spacing: 0.3rem; color: var(--silver); text-transform: uppercase; margin-bottom: 15px;">A Portrait at 26</h2>
                 <h1>Zain.</h1>
-                <p class="description sans-text" style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 20px;">
+                <p class="description sans-text" style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px;">
                     Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
                 </p>
 
-                <div style="margin-top: 40px;">
-                    
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
-                            <span>Intellectual Depth (Encyclopedia)</span>
-                            <span style="color: var(--sinopia-red);">98%</span>
-                        </div>
-                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
+                <div style="margin-top: 30px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px;">
+                        <span>Intellectual Depth</span>
+                        <span style="color: var(--sinopia-red);">98%</span>
                     </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
 
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
-                            <span>Leadership & Guidance</span>
-                            <span>⭐⭐⭐⭐⭐</span>
-                        </div>
-                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px;">
+                        <span>Leadership & Guidance</span>
+                        <span>⭐⭐⭐⭐⭐</span>
                     </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
 
-                    <div style="margin-bottom: 30px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
-                            <span>Ambition Drive</span>
-                            <span style="font-weight: 700;">MAX</span>
-                        </div>
-                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 100%; background: var(--sinopia-red);"></div></div>
-                    </div>
-
-                    <div style="margin-bottom: 40px;">
+                    <div style="margin-bottom: 25px;">
                         <span class="trait-badge">Optimistic</span>
                         <span class="trait-badge">Stubborn</span>
                         <span class="trait-badge">Dream Chaser</span>
                         <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
                     </div>
 
-                    <div style="background: white; padding: 25px; border-left: 4px solid var(--indigo-dye); box-shadow: 15px 15px 0px rgba(18, 36, 53, 0.05);">
-                        <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; color: var(--indigo-dye); margin-bottom: 5px; font-weight: 700;">Achievement Unlocked</p>
-                        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--prussian-blue); margin-bottom: 10px;">BUSINESS OWNER ✨</h3>
-                        <p class="sans-text" style="font-size: 0.85rem; color: var(--silver);">
+                    <div style="background: white; padding: 20px; border-left: 4px solid var(--indigo-dye); box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05);">
+                        <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1rem; color: var(--indigo-dye); font-weight: 700;">Achievement Unlocked</p>
+                        <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--prussian-blue); margin: 5px 0;">BUSINESS OWNER ✨</h3>
+                        <p class="sans-text" style="font-size: 0.8rem; color: var(--silver);">
                             From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.
                         </p>
                     </div>
-
                 </div>
 
-                <button class="btn-editorial" style="margin-top: 50px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
+                <button class="btn-editorial" style="margin-top: 40px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
             </div>
         </div>
 
         <div class="chapters" id="chapters">
             <div class="section-header">
-                <p>Curated Collections</p>
-                <h2>Explore Moments</h2>
+                <p style="font-size: 0.7rem; letter-spacing: 0.2rem; color: var(--silver); text-transform: uppercase;">Curated Collections</p>
+                <h2 style="font-size: 2rem;">Explore Moments</h2>
             </div>
 
             <div class="menu-grid">
@@ -430,10 +380,6 @@
         <button class="btn-editorial" onclick="closeModal()">Close</button>
     </div>
 
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
-
     <script>
         function showGateway() {
             document.getElementById('landing').style.display = 'none';
@@ -445,7 +391,8 @@
             if (pass === '160426') {
                 document.getElementById('gateway').style.display = 'none';
                 document.getElementById('main-page').style.display = 'block';
-                document.getElementById('bgMusic').play();
+                const music = document.getElementById('bgMusic');
+                music.play().catch(e => console.log("Audio needs user interaction first"));
             } else {
                 alert('Wrong code!');
                 document.getElementById('hintText').style.display = 'block';
