@@ -113,7 +113,7 @@
             text-align: center;
             outline: none;
             margin-bottom: 20px;
-            width: 300px;
+            width: 400px;
             font-weight: 100;
             font-family: var(--font-body);
         }
@@ -123,7 +123,7 @@
         /* --- 5. MAIN PAGE --- */
         #main-page { display: none; }
 
-        /* SEKSI HERO BIRTHDAY (Vibe 'WANDER' layout) */
+        /* HERO BIRTHDAY */
         .hero-birthday {
             height: 100vh;
             display: flex;
@@ -154,13 +154,13 @@
             font-weight: 300;
         }
 
-        /* INTRODUCTION */
+        /* REVISED INTRODUCTION SECTION */
         .introduction {
             padding: 150px 10% 100px 10%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 80px;
-            align-items: center;
+            align-items: start;
             background-color: var(--anti-flash-white);
         }
 
@@ -169,7 +169,7 @@
             background-image: url('https://via.placeholder.com/600x800/122435/EFEFEF?text=ZAIN+PHOTO');
             background-size: cover;
             background-position: center;
-            height: 70vh;
+            height: 80vh;
             border: 1px solid var(--silver);
         }
         
@@ -192,11 +192,11 @@
         }
 
         .intro-text h2.subtitle {
-            font-size: 1rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.3rem;
-            color: var(--prussian-blue);
-            margin-bottom: 40px;
+            letter-spacing: 0.4rem;
+            color: var(--silver);
+            margin-bottom: 20px;
             font-family: var(--font-body);
             font-weight: 700;
         }
@@ -204,9 +204,14 @@
         .intro-text p.description {
             font-size: 1.1rem;
             color: var(--prussian-blue);
-            max-width: 450px;
+            max-width: 500px;
             margin-bottom: 30px;
         }
+
+        /* STATS STYLING */
+        .stat-bar-bg { width: 100%; height: 4px; background: #ddd; position: relative; }
+        .stat-bar-fill { height: 100%; background: var(--prussian-blue); position: absolute; left: 0; top: 0; }
+        .trait-badge { border: 1px solid var(--silver); padding: 6px 15px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1rem; display: inline-block; margin-right: 8px; margin-bottom: 10px;}
 
         /* CHAPTERS */
         .chapters {
@@ -320,18 +325,63 @@
         </div>
 
         <div class="introduction" id="intro-anchor">
-            <div class="intro-image"></div>
+            <div class="intro-image">
+                <div style="position: absolute; top: 20px; right: 20px; background: var(--sinopia-red); color: white; padding: 10px 15px; font-size: 0.7rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700;">
+                    26 Years of Excellence
+                </div>
+            </div>
             
             <div class="intro-text">
-                <h1>Zain.</h1>
                 <h2 class="subtitle">A Portrait at 26</h2>
-                <p class="description sans-text">
-                    He is the definition of warmth meeting strength. Zain is not just a name, but a story of quiet ambition and unexpected excitement. Behind his cheerful laughter lies a truly masculine figure, leading with principle while always making room for genuine care.
+                <h1>Zain.</h1>
+                <p class="description sans-text" style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 20px;">
+                    Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
                 </p>
-                <p class="description sans-text" style="color: var(--silver); font-weight: 100;">
-                    This is a small celebration for him—a warm, fun, and profoundly masculine man we are proud of.
-                </p>
-                <button class="btn-editorial" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
+
+                <div style="margin-top: 40px;">
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
+                            <span>Intellectual Depth (Encyclopedia)</span>
+                            <span style="color: var(--sinopia-red);">98%</span>
+                        </div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
+                            <span>Leadership & Guidance</span>
+                            <span>⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                    </div>
+
+                    <div style="margin-bottom: 30px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
+                            <span>Ambition Drive</span>
+                            <span style="font-weight: 700;">MAX</span>
+                        </div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 100%; background: var(--sinopia-red);"></div></div>
+                    </div>
+
+                    <div style="margin-bottom: 40px;">
+                        <span class="trait-badge">Optimistic</span>
+                        <span class="trait-badge">Stubborn</span>
+                        <span class="trait-badge">Dream Chaser</span>
+                        <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
+                    </div>
+
+                    <div style="background: white; padding: 25px; border-left: 4px solid var(--indigo-dye); box-shadow: 15px 15px 0px rgba(18, 36, 53, 0.05);">
+                        <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2rem; color: var(--indigo-dye); margin-bottom: 5px; font-weight: 700;">Achievement Unlocked</p>
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--prussian-blue); margin-bottom: 10px;">BUSINESS OWNER ✨</h3>
+                        <p class="sans-text" style="font-size: 0.85rem; color: var(--silver);">
+                            From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.
+                        </p>
+                    </div>
+
+                </div>
+
+                <button class="btn-editorial" style="margin-top: 50px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
             </div>
         </div>
 
@@ -344,7 +394,7 @@
             <div class="menu-grid">
                 <div class="menu-item" onclick="window.open('LINK_SPOTIFY_KAMU', '_blank')">
                     <h3>Playlist</h3>
-                    <p>The sound that's reminds me of u</p>
+                    <p>The sound that reminds me of u</p>
                 </div>
                 <div class="menu-item" onclick="alert('Open your photo gallery here!')">
                     <h3>Moments</h3>
