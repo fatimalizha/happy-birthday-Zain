@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
         :root {
@@ -34,10 +35,8 @@
         h1, h2, h3, .serif-text {
             font-family: var(--font-heading);
             font-weight: 400;
-            text-transform: none;
         }
 
-        /* --- UI COMPONENTS --- */
         .btn-editorial {
             padding: 12px 30px;
             background: transparent;
@@ -56,7 +55,7 @@
             color: var(--anti-flash-white);
         }
 
-        /* --- 1. LANDING PAGE --- */
+        /* --- LANDING PAGE --- */
         #landing {
             height: 100vh;
             display: flex;
@@ -66,29 +65,11 @@
             padding: 20px;
         }
 
-        .landing-content {
-            text-align: center;
-            max-width: 600px;
-        }
+        .landing-content { text-align: center; max-width: 600px; }
+        .landing-content h1 { font-size: 0.9rem; letter-spacing: 0.3rem; text-transform: uppercase; color: var(--silver); margin-bottom: 10px; font-weight: 100; }
+        .landing-content h2 { font-size: clamp(2rem, 8vw, 3.5rem); color: var(--prussian-blue); line-height: 1.1; margin-bottom: 30px; }
 
-        .landing-content h1 {
-            font-size: 0.9rem;
-            letter-spacing: 0.3rem;
-            text-transform: uppercase;
-            color: var(--silver);
-            margin-bottom: 10px;
-            font-family: var(--font-body);
-            font-weight: 100;
-        }
-
-        .landing-content h2 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
-            color: var(--prussian-blue);
-            line-height: 1.1;
-            margin-bottom: 30px;
-        }
-
-        /* --- 2. GATEWAY --- */
+        /* --- GATEWAY --- */
         #gateway {
             display: none;
             height: 100vh;
@@ -99,8 +80,6 @@
             color: var(--anti-flash-white);
             padding: 20px;
         }
-
-        #gateway h2 { color: var(--silver); font-size: 0.8rem; letter-spacing: 0.3rem; text-transform: uppercase; margin-bottom: 30px; text-align: center;}
 
         .pass-input {
             background: transparent;
@@ -116,18 +95,18 @@
             font-weight: 100;
         }
 
-        .hint { font-size: 0.75rem; color: var(--silver); margin-top: 15px; }
-
-        /* --- 3. MAIN PAGE --- */
+        /* --- MAIN PAGE --- */
         #main-page { display: none; }
 
+        /* EDIT: Background Alam Hijau Estetik */
         .hero-birthday {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background: linear-gradient(rgba(18, 36, 53, 0.6), rgba(18, 36, 53, 0.6)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2074&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             text-align: center;
@@ -145,14 +124,7 @@
             margin-bottom: 20px;
         }
 
-        .hero-birthday p {
-            font-size: clamp(0.8rem, 3vw, 1.2rem);
-            letter-spacing: 0.3rem;
-            text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        /* INTRODUCTION (RESPONSIVE GRID) */
+        /* INTRODUCTION */
         .introduction {
             padding: 80px 10%;
             display: grid;
@@ -164,31 +136,19 @@
 
         .intro-image {
             position: relative;
-            background-image: url('https://via.placeholder.com/600x800/122435/EFEFEF?text=ZAIN+PHOTO');
+            /* GANTI LINK FOTO ZAIN DISINI */
+            background-image: url('https://via.placeholder.com/600x800/122435/EFEFEF?text=FOTO+ZAIN+DISINI');
             background-size: cover;
             background-position: center;
             height: 70vh;
             border: 1px solid var(--silver);
         }
 
-        .intro-text h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            color: var(--sinopia-red);
-            margin-bottom: 10px;
-        }
-
-        .intro-text p.description {
-            font-size: 1.05rem;
-            color: var(--prussian-blue);
-            margin-bottom: 25px;
-        }
-
-        /* STATS & BADGES */
         .stat-bar-bg { width: 100%; height: 4px; background: #ddd; position: relative; margin-bottom: 20px; }
         .stat-bar-fill { height: 100%; background: var(--prussian-blue); position: absolute; left: 0; top: 0; }
         .trait-badge { border: 1px solid var(--silver); padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1rem; display: inline-block; margin: 0 5px 10px 0;}
 
-        /* CHAPTERS GRID */
+        /* CHAPTERS */
         .chapters { padding: 80px 10%; background-color: white; }
         .section-header { text-align: center; margin-bottom: 50px; }
         .menu-grid {
@@ -211,9 +171,6 @@
             padding: 20px;
             text-align: center;
         }
-
-        .menu-item h3 { font-size: 1.4rem; margin-bottom: 8px; }
-        .menu-item p { font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; }
 
         /* MODALS */
         .modal {
@@ -238,25 +195,18 @@
             z-index: 999;
         }
 
-        /* --- MOBILE RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .introduction {
-                grid-template-columns: 1fr;
-                padding: 60px 5%;
-            }
-            .intro-image { height: 50vh; order: -1; }
-            .menu-grid { grid-template-columns: 1fr; }
-            .intro-text { text-align: center; }
-            .intro-text p.description { margin: 0 auto 25px auto; }
-            .hero-birthday h1 { line-height: 1.1; }
-        }
-
         .puzzle-box {
             width: 150px; height: 150px;
             margin: 20px auto;
             border: 1px dashed var(--silver);
             display: flex; align-items: center; justify-content: center;
             background-color: var(--anti-flash-white);
+        }
+
+        @media (max-width: 768px) {
+            .introduction { grid-template-columns: 1fr; padding: 60px 5%; }
+            .intro-image { height: 50vh; order: -1; }
+            .menu-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -278,12 +228,12 @@
         <h2>Enter Access Code</h2>
         <input type="password" id="passInput" class="pass-input" placeholder="000000" maxlength="6">
         <button class="btn-editorial" style="border-color: white; color: white;" onclick="checkPass()">Unlock</button>
-        <p id="hintText" class="hint" style="display:none;">Hint: well u are old now whopss </p>
+        <p id="hintText" class="hint" style="display:none; color: var(--silver); margin-top:15px; font-size:0.75rem;">Hint: well u are old now whopss</p>
     </section>
 
     <section id="main-page">
         <div class="hero-birthday">
-            <p>Happy 26th Birthday</p>
+            <p style="letter-spacing: 0.3rem; text-transform: uppercase;">Happy 26th Birthday</p>
             <h1>ZAIN.</h1>
             <button class="btn-editorial" style="border-color: white; color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
         </div>
@@ -296,9 +246,9 @@
             </div>
             
             <div class="intro-text">
-                <h2 class="subtitle" style="font-size: 0.7rem; letter-spacing: 0.3rem; color: var(--silver); text-transform: uppercase; margin-bottom: 15px;">A Portrait at 26</h2>
-                <h1>Zain.</h1>
-                <p class="description sans-text" style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px;">
+                <h2 style="font-size: 0.7rem; letter-spacing: 0.3rem; color: var(--silver); text-transform: uppercase; margin-bottom: 15px;">A Portrait at 26</h2>
+                <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); color: var(--sinopia-red); margin-bottom: 10px;">Zain.</h1>
+                <p class="description" style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px;">
                     Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
                 </p>
 
@@ -325,7 +275,7 @@
                     <div style="background: white; padding: 20px; border-left: 4px solid var(--indigo-dye); box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05);">
                         <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1rem; color: var(--indigo-dye); font-weight: 700;">Achievement Unlocked</p>
                         <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--prussian-blue); margin: 5px 0;">BUSINESS OWNER ✨</h3>
-                        <p class="sans-text" style="font-size: 0.8rem; color: var(--silver);">
+                        <p style="font-size: 0.8rem; color: var(--silver);">
                             From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.
                         </p>
                     </div>
@@ -344,19 +294,19 @@
             <div class="menu-grid">
                 <div class="menu-item" onclick="window.open('LINK_SPOTIFY_KAMU', '_blank')">
                     <h3>Playlist</h3>
-                    <p>The sound that reminds me of u</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">The sound that reminds me of u</p>
                 </div>
                 <div class="menu-item" onclick="alert('Open your photo gallery here!')">
                     <h3>Moments</h3>
-                    <p>A Visual Timeline</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">A Visual Timeline</p>
                 </div>
                 <div class="menu-item" onclick="showModal('message')">
                     <h3>Message</h3>
-                    <p>Words From Me</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">Words From Me</p>
                 </div>
                 <div class="menu-item" onclick="showModal('gift')">
                     <h3>Gift</h3>
-                    <p>The Final Piece</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">The Final Piece</p>
                 </div>
             </div>
         </div>
@@ -366,17 +316,17 @@
     
     <div class="modal" id="modal-message">
         <h3>A Message for You</h3>
-        <p class="sans-text">"Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"</p>
+        <p style="margin: 20px 0; font-size: 0.95rem;">"Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"</p>
         <button class="btn-editorial" onclick="closeModal()">Close</button>
     </div>
 
     <div class="modal" id="modal-gift">
         <h3>Your Gift</h3>
         <div class="puzzle-box">
-            <p class="sans-text" style="color: #999; font-style: italic;">[ Missing Piece ]</p>
+            <p style="color: #999; font-style: italic;">[ Missing Piece ]</p>
         </div>
-        <p class="sans-text">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
-        <p class="serif-text" style="font-size: 1.5rem; color: var(--sinopia-red);">See u later!</p>
+        <p style="margin-bottom: 10px;">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
+        <p style="font-size: 1.5rem; color: var(--sinopia-red); font-family: var(--font-heading);">See u later!</p>
         <button class="btn-editorial" onclick="closeModal()">Close</button>
     </div>
 
@@ -389,10 +339,18 @@
         function checkPass() {
             const pass = document.getElementById('passInput').value;
             if (pass === '160426') {
+                // EDIT: Efek Confetti
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#CC361E', '#224766', '#ffffff', '#2d4a22']
+                });
+
                 document.getElementById('gateway').style.display = 'none';
                 document.getElementById('main-page').style.display = 'block';
                 const music = document.getElementById('bgMusic');
-                music.play().catch(e => console.log("Audio needs user interaction first"));
+                music.play().catch(e => console.log("Audio play blocked by browser"));
             } else {
                 alert('Wrong code!');
                 document.getElementById('hintText').style.display = 'block';
