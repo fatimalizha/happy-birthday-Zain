@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <style>
@@ -17,7 +17,9 @@
             --sinopia-red: #CC361E;   
             --anti-flash-white: #EFEFEF; 
             --silver: #B3B3B3;        
-            --font-heading: 'Apple Garamond', 'Garamond', 'Georgia', serif; 
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-heading: 'Barlow Condensed', sans-serif;
+            --font-serif: 'DM Serif Display', Georgia, serif;
             --font-body: 'Roboto', sans-serif; 
         }
 
@@ -32,45 +34,95 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .serif-text {
-            font-family: var(--font-heading);
-            font-weight: 400;
-        }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 800; }
+        .serif-text { font-family: var(--font-serif); }
 
         .btn-editorial {
-            padding: 12px 30px;
+            padding: 13px 34px;
             background: transparent;
-            border: 1px solid var(--prussian-blue);
+            border: 2px solid var(--prussian-blue);
             color: var(--prussian-blue);
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.35s ease;
             text-transform: uppercase;
-            letter-spacing: 0.15rem;
-            font-size: 0.75rem;
+            letter-spacing: 0.18rem;
+            font-size: 0.72rem;
+            font-weight: 700;
             margin-top: 20px;
             border-radius: 8px;
+            font-family: var(--font-heading);
         }
-
         .btn-editorial:hover {
             background: var(--prussian-blue);
             color: var(--anti-flash-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(18,36,53,0.18);
         }
 
-        /* --- LANDING PAGE --- */
         #landing {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--anti-flash-white);
+            background-color: var(--prussian-blue);
             padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .landing-content { text-align: center; max-width: 600px; }
-        .landing-content h1 { font-size: 0.9rem; letter-spacing: 0.3rem; text-transform: uppercase; color: var(--silver); margin-bottom: 10px; font-weight: 100; }
-        .landing-content h2 { font-size: clamp(2rem, 8vw, 3.5rem); color: var(--prussian-blue); line-height: 1.1; margin-bottom: 30px; }
+        #landing::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -80px;
+            width: 340px; height: 340px;
+            border: 2px solid rgba(204,54,30,0.18);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        #landing::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -60px;
+            width: 260px; height: 260px;
+            background: rgba(204,54,30,0.07);
+            border-radius: 50%;
+            pointer-events: none;
+        }
 
-        /* --- GATEWAY --- */
+        .landing-content { text-align: center; max-width: 640px; position: relative; z-index: 1; }
+
+        .landing-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 12vw, 6.5rem);
+            color: var(--anti-flash-white);
+            line-height: 0.95;
+            letter-spacing: 0.04em;
+            margin-bottom: 10px;
+        }
+
+        .landing-content h2 span { color: var(--sinopia-red); }
+
+        .landing-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.4rem;
+            text-transform: uppercase;
+            color: var(--sinopia-red);
+            font-weight: 700;
+            font-family: var(--font-heading);
+            margin-bottom: 4px;
+        }
+
+        .landing-content .btn-editorial {
+            border-color: rgba(239,239,239,0.5);
+            color: var(--anti-flash-white);
+            margin-top: 36px;
+        }
+        .landing-content .btn-editorial:hover {
+            background: var(--anti-flash-white);
+            color: var(--prussian-blue);
+            border-color: var(--anti-flash-white);
+        }
+
         #gateway {
             display: none;
             height: 100vh;
@@ -80,12 +132,22 @@
             background-color: var(--prussian-blue);
             color: var(--anti-flash-white);
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #gateway h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            letter-spacing: 0.06em;
+            margin-bottom: 30px;
+            color: var(--anti-flash-white);
         }
 
         .pass-input {
             background: transparent;
             border: none;
-            border-bottom: 1px solid var(--sinopia-red);
+            border-bottom: 2px solid var(--sinopia-red);
             color: white;
             font-size: clamp(2.5rem, 10vw, 4rem);
             text-align: center;
@@ -96,7 +158,6 @@
             font-weight: 100;
         }
 
-        /* --- MAIN PAGE --- */
         #main-page { display: none; }
 
         .hero-birthday {
@@ -105,31 +166,51 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('bubbles.jpg');
+            background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url('bubbles.jpg');
             background-size: cover;
             background-position: center;
             text-align: center;
             color: white;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-birthday::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, rgba(239,239,239,0.12));
+            pointer-events: none;
+        }
+
+        .hero-birthday p {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            letter-spacing: 0.35rem;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            opacity: 0.75;
+            margin-bottom: 8px;
         }
 
         .hero-birthday h1 {
-            font-size: clamp(3.5rem, 15vw, 8rem);
-            letter-spacing: -0.1rem;
-            line-height: 0.9;
+            font-family: var(--font-display);
+            font-size: clamp(5rem, 22vw, 14rem);
+            letter-spacing: 0.04em;
+            line-height: 0.88;
             text-transform: uppercase;
-            font-family: var(--font-body);
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-weight: 400;
+            margin-bottom: 28px;
+            color: var(--anti-flash-white);
         }
 
-        /* INTRODUCTION */
         .introduction {
-            padding: 80px 10%;
+            padding: 90px 10%;
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            gap: 40px;
+            gap: 50px;
             align-items: start;
             background-color: var(--anti-flash-white);
         }
@@ -145,126 +226,146 @@
             overflow: hidden;
         }
 
+        .intro-text h2 {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            letter-spacing: 0.3rem;
+            color: var(--silver);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .intro-name {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 10vw, 6rem);
+            color: var(--sinopia-red);
+            line-height: 0.9;
+            letter-spacing: 0.04em;
+            margin-bottom: 18px;
+        }
+
         .stat-bar-bg { 
-            width: 100%; 
-            height: 12px; 
-            background: #ddd; 
-            position: relative; 
-            margin-bottom: 20px; 
-            border-radius: 10px; 
-            overflow: hidden;
+            width: 100%; height: 10px; 
+            background: #ddd; position: relative; 
+            margin-bottom: 20px; border-radius: 10px; overflow: hidden;
         }
         .stat-bar-fill { 
-            height: 100%; 
-            background: var(--prussian-blue); 
-            position: absolute; 
-            left: 0; 
-            top: 0; 
-            border-radius: 10px;
+            height: 100%; background: var(--prussian-blue); 
+            position: absolute; left: 0; top: 0; border-radius: 10px;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08rem;
+            margin-bottom: 5px;
+            font-family: var(--font-heading);
+            font-weight: 600;
         }
 
         .trait-badge { 
-            border: 1px solid var(--silver); 
-            padding: 8px 16px; 
-            font-size: 0.65rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.1rem; 
-            display: inline-block; 
-            margin: 0 5px 10px 0;
-            border-radius: 50px;
+            border: 1.5px solid var(--silver); 
+            padding: 7px 15px; font-size: 0.62rem; 
+            text-transform: uppercase; letter-spacing: 0.1rem; 
+            display: inline-block; margin: 0 5px 10px 0;
+            border-radius: 50px; font-family: var(--font-heading); font-weight: 600;
         }
 
-        /* CHAPTERS */
-        .chapters { padding: 80px 10%; background-color: white; }
-        .section-header { text-align: center; margin-bottom: 50px; }
+        .chapters { padding: 90px 10%; background-color: white; }
+
+        .section-header { text-align: center; margin-bottom: 54px; }
+
+        .section-header p {
+            font-size: 0.68rem; letter-spacing: 0.25rem;
+            color: var(--silver); text-transform: uppercase;
+            font-family: var(--font-heading); font-weight: 600; margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            color: var(--prussian-blue); letter-spacing: 0.04em;
+        }
+
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+            gap: 20px; max-width: 1000px; margin: 0 auto;
         }
 
         .menu-item {
             background-color: var(--anti-flash-white);
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            padding: 20px;
-            text-align: center;
-            border-radius: 15px;
+            min-height: 180px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer;
+            transition: all 0.35s ease; padding: 28px 20px; text-align: center;
+            border-radius: 16px; border: 1.5px solid transparent;
+            position: relative; overflow: hidden;
         }
 
-        /* MODALS */
+        .menu-item::before {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 3px; background: var(--sinopia-red);
+            transition: width 0.35s ease; border-radius: 0 0 0 16px;
+        }
+
+        .menu-item:hover::before { width: 100%; }
+        .menu-item:hover { background-color: var(--prussian-blue); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(18,36,53,0.15); }
+        .menu-item:hover h3 { color: var(--anti-flash-white); }
+        .menu-item:hover p { color: var(--silver) !important; }
+
+        .menu-item h3 {
+            font-family: var(--font-display); font-size: 2rem;
+            letter-spacing: 0.06em; color: var(--prussian-blue);
+            transition: color 0.35s ease; margin-bottom: 6px;
+        }
+
+        .menu-item p { transition: color 0.35s ease; }
+
         .modal {
-            display: none;
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%; max-width: 450px;
-            background: white;
-            padding: 40px 30px;
-            z-index: 1000;
-            text-align: center;
+            display: none; position: fixed;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 90%; max-width: 450px; background: white;
+            padding: 44px 34px; z-index: 1000; text-align: center;
             border-left: 6px solid var(--sinopia-red);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            border-radius: 0 15px 15px 0;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+            border-radius: 0 18px 18px 0;
         }
 
-        /* EDIT: CSS UNTUK BUKU MESSAGE */
-        .book-container {
-            position: relative;
-            min-height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .modal h3 {
+            font-family: var(--font-display); font-size: 2rem;
+            letter-spacing: 0.06em; color: var(--prussian-blue); margin-bottom: 4px;
         }
-        .book-page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        .book-page.active {
-            display: block;
-        }
+
+        .book-container { position: relative; min-height: 200px; display: flex; flex-direction: column; justify-content: center; }
+        .book-page { display: none; animation: fadeIn 0.5s ease; }
+        .book-page.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .page-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .nav-link {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            color: var(--sinopia-red);
-            cursor: pointer;
-            font-weight: 700;
-        }
+        .page-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .nav-link { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--sinopia-red); cursor: pointer; font-weight: 700; font-family: var(--font-heading); }
 
         .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 53, 0.95);
-            z-index: 999;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(18, 36, 53, 0.92); z-index: 999; backdrop-filter: blur(4px);
         }
 
         .puzzle-box {
-            width: 150px; height: 150px;
-            margin: 20px auto;
-            border: 1px dashed var(--silver);
-            display: flex; align-items: center; justify-content: center;
-            background-color: var(--anti-flash-white);
-            border-radius: 12px;
+            width: 150px; height: 150px; margin: 20px auto;
+            border: 1px dashed var(--silver); display: flex; align-items: center;
+            justify-content: center; background-color: var(--anti-flash-white); border-radius: 12px;
         }
+
+        .achievement-box { background: white; padding: 25px; border-left: 6px solid var(--indigo-dye); border-radius: 0 15px 15px 0; box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05); }
+        .achievement-box .ach-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--indigo-dye); font-weight: 700; font-family: var(--font-heading); }
+        .achievement-box h3 { font-family: var(--font-display); font-size: 1.7rem; color: var(--prussian-blue); margin: 6px 0; letter-spacing: 0.04em; }
+        .achievement-box p { font-size: 0.8rem; color: var(--silver); font-weight: 300; }
+
+        .hint { color: var(--silver); margin-top: 15px; font-size: 0.75rem; font-family: var(--font-body); }
 
         @media (max-width: 768px) {
             .introduction { grid-template-columns: 1fr; padding: 60px 5%; }
@@ -281,8 +382,9 @@
 
     <section id="landing">
         <div class="landing-content">
-            <h1>A little something for you</h1>
-            <h2>The Odyssey of Zain at Twenty Six</h2>
+            <p class="landing-eyebrow">A little something for you</p>
+            <h2>The Odyssey of <span>Zain</span></h2>
+            <h2 style="font-size: clamp(1.6rem, 6vw, 3rem); color: var(--silver); margin-top: -4px;">at Twenty Six</h2>
             <button class="btn-editorial" onclick="showGateway()">Start Journey</button>
         </div>
     </section>
@@ -290,65 +392,63 @@
     <section id="gateway">
         <h2>Enter Access Code</h2>
         <input type="password" id="passInput" class="pass-input" placeholder="000000" maxlength="6">
-        <button class="btn-editorial" style="border-color: white; color: white;" onclick="checkPass()">Unlock</button>
-        <p id="hintText" class="hint" style="display:none; color: var(--silver); margin-top:15px; font-size:0.75rem;">Hint: well u are old now whopss</p>
+        <button class="btn-editorial" style="border-color: rgba(239,239,239,0.5); color: white;" onclick="checkPass()">Unlock</button>
+        <p id="hintText" class="hint" style="display:none;">Hint: well u are old now whopss</p>
     </section>
 
     <section id="main-page">
         <div class="hero-birthday">
-            <p style="letter-spacing: 0.3rem; text-transform: uppercase;">Happy 26th Birthday</p>
+            <p>Happy 26th Birthday</p>
             <h1>ZAIN.</h1>
-            <button class="btn-editorial" style="border-color: white; color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
+            <button class="btn-editorial" style="border-color: rgba(255,255,255,0.5); color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
         </div>
 
         <div class="introduction" id="intro-anchor">
             <div class="intro-image">
-                <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 12px; font-size: 0.6rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700; border-radius: 5px;">
+                <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 14px; font-size: 0.58rem; letter-spacing: 0.12rem; text-transform: uppercase; font-weight: 700; border-radius: 6px; font-family: var(--font-heading);">
                     26 Years of Excellence
                 </div>
             </div>
             
             <div class="intro-text">
-                <h2 style="font-size: 0.7rem; letter-spacing: 0.3rem; color: var(--silver); text-transform: uppercase; margin-bottom: 15px;">A Portrait at 26</h2>
-                <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); color: var(--sinopia-red); margin-bottom: 10px;">Zain.</h1>
-                <p class="description" style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px;">
+                <h2>A Portrait at 26</h2>
+                <div class="intro-name">Zain.</div>
+                <p style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px; font-size: 0.92rem; color: var(--prussian-blue);">
                     Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
                 </p>
 
                 <div style="margin-top: 30px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px;">
+                    <div class="stat-label">
                         <span>Intellectual Depth</span>
                         <span style="color: var(--sinopia-red);">98%</span>
                     </div>
                     <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
 
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px;">
+                    <div class="stat-label">
                         <span>Leadership & Guidance</span>
                         <span>⭐⭐⭐⭐⭐</span>
                     </div>
                     <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
                     
                     <div style="margin-bottom: 30px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 8px;">
+                        <div class="stat-label">
                            <span>Ambition Drive</span>
-                            <span style="font-weight: 700;">MAX</span>
+                            <span style="color: var(--sinopia-red);">MAX</span>
                         </div>
                         <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 100%; background: var(--sinopia-red);"></div></div>
                     </div>
 
-                    <div style="margin-bottom: 25px;">
+                    <div style="margin-bottom: 28px;">
                         <span class="trait-badge">Optimistic</span>
                         <span class="trait-badge">Stubborn</span>
                         <span class="trait-badge">Dream Chaser</span>
                         <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
                     </div>
 
-                    <div style="background: white; padding: 25px; border-left: 6px solid var(--indigo-dye); border-radius: 0 15px 15px 0; box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05);">
-                        <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1rem; color: var(--indigo-dye); font-weight: 700;">Achievement Unlocked</p>
-                        <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--prussian-blue); margin: 5px 0;">BUSINESS OWNER ✨</h3>
-                        <p style="font-size: 0.8rem; color: var(--silver);">
-                            From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.
-                        </p>
+                    <div class="achievement-box">
+                        <p class="ach-label">Achievement Unlocked</p>
+                        <h3>BUSINESS OWNER ✨</h3>
+                        <p>From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.</p>
                     </div>
                 </div>
 
@@ -358,26 +458,26 @@
 
         <div class="chapters" id="chapters">
             <div class="section-header">
-                <p style="font-size: 0.7rem; letter-spacing: 0.2rem; color: var(--silver); text-transform: uppercase;">Curated Collections</p>
-                <h2 style="font-size: 2rem;">Explore Moments</h2>
+                <p>Curated Collections</p>
+                <h2>Explore Moments</h2>
             </div>
 
             <div class="menu-grid">
                 <div class="menu-item" onclick="window.open('LINK_SPOTIFY_KAMU', '_blank')">
                     <h3>Playlist</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">The sound that reminds me of u</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The sound that reminds me of u</p>
                 </div>
                 <div class="menu-item" onclick="alert('Open your photo gallery here!')">
                     <h3>Moments</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">A Visual Timeline</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">A Visual Timeline</p>
                 </div>
                 <div class="menu-item" onclick="showModal('message')">
                     <h3>Message</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">Words From Me</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">Words From Me</p>
                 </div>
                 <div class="menu-item" onclick="showModal('gift')">
                     <h3>Gift</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase;">The Final Piece</p>
+                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The Final Piece</p>
                 </div>
             </div>
         </div>
@@ -404,7 +504,7 @@
 
         <div class="page-nav">
             <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility: hidden;">&larr; Back</span>
-            <span style="font-size: 0.7rem; color: var(--silver);" id="pageIndicator">1 / 2</span>
+            <span style="font-size: 0.7rem; color: var(--silver); font-family: var(--font-heading);" id="pageIndicator">1 / 2</span>
             <span class="nav-link" id="nextBtn" onclick="changePage(1)">Next &rarr;</span>
         </div>
 
@@ -417,7 +517,7 @@
             <p style="color: #999; font-style: italic;">[ Missing Piece ]</p>
         </div>
         <p style="margin-bottom: 10px;">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
-        <p style="font-size: 1.5rem; color: var(--sinopia-red); font-family: var(--font-heading);">See u later!</p>
+        <p style="font-size: 1.5rem; color: var(--sinopia-red); font-family: var(--font-serif);">See u later!</p>
         <button class="btn-editorial" onclick="closeModal()">Close</button>
     </div>
 
@@ -439,7 +539,6 @@
                     origin: { y: 0.6 },
                     colors: ['#CC361E', '#224766', '#ffffff', '#2d4a22']
                 });
-
                 document.getElementById('gateway').style.display = 'none';
                 document.getElementById('main-page').style.display = 'block';
                 const music = document.getElementById('bgMusic');
@@ -450,13 +549,10 @@
             }
         }
 
-        // EDIT: FUNGSI PINDAH HALAMAN BUKU
         function changePage(step) {
             document.getElementById(`page-${currentMsgPage}`).classList.remove('active');
             currentMsgPage += step;
             document.getElementById(`page-${currentMsgPage}`).classList.add('active');
-
-            // Update UI
             document.getElementById('pageIndicator').innerText = `${currentMsgPage} / ${totalPages}`;
             document.getElementById('prevBtn').style.visibility = currentMsgPage === 1 ? 'hidden' : 'visible';
             document.getElementById('nextBtn').style.visibility = currentMsgPage === totalPages ? 'hidden' : 'visible';
@@ -465,7 +561,6 @@
         function showModal(type) {
             document.getElementById('overlay').style.display = 'block';
             document.getElementById('modal-' + type).style.display = 'block';
-            // Reset ke halaman 1 tiap kali modal dibuka
             if(type === 'message') {
                 currentMsgPage = 1;
                 document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
