@@ -194,15 +194,8 @@
             font-weight: 100;
             letter-spacing: 0.3em;
         }
-        .gateway-btn {
-            border-color: rgba(239,239,239,0.4);
-            color: var(--anti-flash-white);
-        }
-        .gateway-btn:hover {
-            background: var(--anti-flash-white);
-            color: var(--prussian-blue);
-            border-color: var(--anti-flash-white);
-        }
+        .gateway-btn { border-color: rgba(239,239,239,0.4); color: var(--anti-flash-white); }
+        .gateway-btn:hover { background: var(--anti-flash-white); color: var(--prussian-blue); border-color: var(--anti-flash-white); }
         .hint { color: var(--silver); margin-top: 15px; font-size: 0.75rem; font-family: var(--font-body); }
 
         /* =================== MAIN PAGE =================== */
@@ -252,75 +245,224 @@
             color: var(--anti-flash-white);
         }
 
-        /* INTRODUCTION */
+        /* =================== INTRODUCTION — REDESIGNED =================== */
         .introduction {
-            padding: 90px 10%;
+            padding: 100px 8%;
+            background-color: var(--prussian-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        .introduction::before {
+            content: 'ZAIN';
+            position: absolute;
+            font-family: var(--font-display);
+            font-size: 22vw;
+            color: rgba(255,255,255,0.03);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .intro-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
             align-items: start;
-            background-color: var(--anti-flash-white);
+            position: relative;
+            z-index: 1;
         }
         .intro-image {
             position: relative;
             background-image: url('zain 1.jpeg');
             background-size: cover;
             background-position: center;
-            height: 70vh;
-            border: 1px solid var(--silver);
-            border-radius: 20px;
+            height: 75vh;
+            border-radius: 4px;
             overflow: hidden;
         }
-        .intro-text h2 {
+        .intro-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(18,36,53,0.6) 0%, transparent 50%);
+        }
+        .intro-img-badge {
+            position: absolute;
+            bottom: 20px; left: 20px;
+            background: var(--sinopia-red);
+            color: white;
+            padding: 10px 16px;
+            font-size: 0.6rem;
+            letter-spacing: 0.15rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            border-radius: 4px;
+            z-index: 2;
+        }
+        .intro-text-col { color: var(--anti-flash-white); }
+        .intro-eyebrow {
             font-family: var(--font-body);
-            font-size: 0.7rem;
-            letter-spacing: 0.3rem;
-            color: var(--silver);
+            font-size: 0.65rem;
+            letter-spacing: 0.4rem;
+            color: var(--sinopia-red);
             text-transform: uppercase;
             margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: 700;
         }
         .intro-name {
             font-family: var(--font-display);
-            font-size: clamp(4rem, 10vw, 6rem);
-            color: var(--sinopia-red);
-            line-height: 0.9;
+            font-size: clamp(4rem, 10vw, 7rem);
+            color: var(--anti-flash-white);
+            line-height: 0.85;
             letter-spacing: 0.04em;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
-        .stat-bar-bg {
-            width: 100%; height: 10px;
-            background: #ddd; position: relative;
-            margin-bottom: 20px; border-radius: 10px; overflow: hidden;
+        .intro-desc {
+            font-style: italic;
+            border-left: 2px solid var(--sinopia-red);
+            padding-left: 16px;
+            font-size: 0.9rem;
+            color: rgba(239,239,239,0.7);
+            margin-bottom: 36px;
+            line-height: 1.7;
         }
-        .stat-bar-fill {
-            height: 100%; background: var(--prussian-blue);
-            position: absolute; left: 0; top: 0; border-radius: 10px;
-        }
+
+        /* Stat bars */
+        .stat-block { margin-bottom: 28px; }
         .stat-label {
             display: flex;
             justify-content: space-between;
             font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 0.08rem;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-family: var(--font-heading);
             font-weight: 600;
+            color: rgba(239,239,239,0.8);
         }
+        .stat-bar-bg {
+            width: 100%; height: 3px;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+            border-radius: 10px; overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%; background: var(--anti-flash-white);
+            position: absolute; left: 0; top: 0; border-radius: 10px;
+        }
+        .stat-bar-fill.red { background: var(--sinopia-red); }
+
+        /* Trait badges — clickable */
+        .traits-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
         .trait-badge {
-            border: 1.5px solid var(--silver);
-            padding: 7px 15px; font-size: 0.62rem;
-            text-transform: uppercase; letter-spacing: 0.1rem;
-            display: inline-block; margin: 0 5px 10px 0;
-            border-radius: 50px; font-family: var(--font-heading); font-weight: 600;
+            border: 1.5px solid rgba(239,239,239,0.25);
+            padding: 8px 18px;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--anti-flash-white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        .achievement-box { background: white; padding: 25px; border-left: 6px solid var(--indigo-dye); border-radius: 0 15px 15px 0; box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05); }
-        .achievement-box .ach-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--indigo-dye); font-weight: 700; font-family: var(--font-heading); }
-        .achievement-box h3 { font-family: var(--font-display); font-size: 1.7rem; color: var(--prussian-blue); margin: 6px 0; letter-spacing: 0.04em; }
-        .achievement-box p { font-size: 0.8rem; color: var(--silver); font-weight: 300; }
+        .trait-badge:hover, .trait-badge.active-trait {
+            background: var(--sinopia-red);
+            border-color: var(--sinopia-red);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .trait-tooltip {
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--prussian-blue);
+            border: 1px solid rgba(204,54,30,0.4);
+            color: rgba(239,239,239,0.9);
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: 0.72rem;
+            text-transform: none;
+            letter-spacing: 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: 200px;
+            line-height: 1.5;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            pointer-events: none;
+        }
+        .trait-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%; left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(204,54,30,0.4);
+        }
+        .trait-badge.active-trait .trait-tooltip { display: block; }
+
+        /* Achievement carousel */
+        .achievement-section { margin-top: 10px; }
+        .achievement-section .ach-label {
+            font-size: 0.58rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            color: var(--sinopia-red);
+            font-weight: 700;
+            font-family: var(--font-heading);
+            margin-bottom: 12px;
+        }
+        .ach-track-outer {
+            overflow: hidden;
+            position: relative;
+        }
+        .ach-track {
+            display: flex;
+            gap: 14px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .ach-card {
+            min-width: 220px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-left: 4px solid var(--indigo-dye);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 16px;
+            flex-shrink: 0;
+            transition: border-left-color 0.3s;
+        }
+        .ach-card:hover { border-left-color: var(--sinopia-red); }
+        .ach-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--anti-flash-white);
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+        .ach-card p { font-size: 0.75rem; color: rgba(239,239,239,0.5); font-weight: 300; line-height: 1.5; }
+        .ach-card .ach-emoji { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+        .ach-nav {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .ach-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .ach-dot.active { background: var(--sinopia-red); width: 20px; border-radius: 3px; }
 
         /* CHAPTERS */
-        .chapters { padding: 90px 10%; background-color: white; }
+        .chapters { padding: 90px 10%; background-color: var(--anti-flash-white); }
         .section-header { text-align: center; margin-bottom: 54px; }
         .section-header p {
             font-size: 0.68rem; letter-spacing: 0.25rem;
@@ -338,11 +480,11 @@
             gap: 20px; max-width: 1000px; margin: 0 auto;
         }
         .menu-item {
-            background-color: var(--anti-flash-white);
+            background-color: white;
             min-height: 180px; display: flex; flex-direction: column;
             justify-content: center; align-items: center; cursor: pointer;
             transition: all 0.35s ease; padding: 28px 20px; text-align: center;
-            border-radius: 16px; border: 1.5px solid transparent;
+            border-radius: 16px; border: 1.5px solid rgba(18,36,53,0.06);
             position: relative; overflow: hidden;
         }
         .menu-item::before {
@@ -370,6 +512,7 @@
             border-left: 6px solid var(--sinopia-red);
             box-shadow: 0 24px 60px rgba(0,0,0,0.22);
             border-radius: 0 18px 18px 0;
+            max-height: 90vh; overflow-y: auto;
         }
         .modal h3 {
             font-family: var(--font-display); font-size: 2rem;
@@ -395,178 +538,61 @@
             justify-content: center; background-color: var(--anti-flash-white); border-radius: 12px;
         }
 
-        /* =================== MOMENTS MODAL =================== */
+        /* =================== MOMENTS FULLSCREEN =================== */
         .modal-moments {
             display: none; position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1000;
-            overflow: hidden;
+            z-index: 1000; overflow: hidden;
         }
-
-        /* Birthday background */
         .moments-bg {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
             overflow: hidden;
         }
         .moments-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: radial-gradient(ellipse at 20% 50%, rgba(204,54,30,0.08) 0%, transparent 60%),
                         radial-gradient(ellipse at 80% 20%, rgba(34,71,102,0.15) 0%, transparent 50%);
         }
-
-        /* Floating handwritten texts */
-        .floating-words {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
+        .floating-words { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
         .fw {
-            position: absolute;
-            font-family: var(--font-handwritten);
-            color: rgba(255,255,255,0.07);
-            user-select: none;
-            white-space: nowrap;
+            position: absolute; font-family: var(--font-handwritten);
+            color: rgba(255,255,255,0.07); user-select: none; white-space: nowrap;
         }
-
-        /* Polaroid stack */
-        .polaroid-stage {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .polaroid-wrapper {
-            position: relative;
-            width: 280px;
-            height: 340px;
-        }
+        .polaroid-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        .polaroid-wrapper { position: relative; width: 280px; height: 340px; }
         .polaroid-card {
-            position: absolute;
-            inset: 0;
-            background: white;
-            border-radius: 4px;
+            position: absolute; inset: 0; background: white; border-radius: 4px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
-            cursor: pointer;
-            user-select: none;
+            cursor: pointer; user-select: none;
         }
-        .polaroid-card.active {
-            z-index: 10;
-            transform: rotate(0deg) translateY(0px);
-            opacity: 1;
-        }
-        .polaroid-card.below-1 {
-            z-index: 9;
-            transform: rotate(2.5deg) translateY(8px) scale(0.97);
-            opacity: 0.9;
-        }
-        .polaroid-card.below-2 {
-            z-index: 8;
-            transform: rotate(-2deg) translateY(14px) scale(0.94);
-            opacity: 0.75;
-        }
-        .polaroid-card.hidden {
-            z-index: 7;
-            transform: rotate(1deg) translateY(20px) scale(0.91);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .polaroid-card.swiping-out {
-            transform: translateX(120%) rotate(15deg) !important;
-            opacity: 0 !important;
-            transition: transform 0.45s ease, opacity 0.3s ease !important;
-        }
-        .polaroid-photo {
-            flex: 1;
-            margin: 12px 12px 8px 12px;
-            background: var(--anti-flash-white);
-            overflow: hidden;
-            border-radius: 2px;
-        }
-        .polaroid-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        /* Placeholder when no image */
+        .polaroid-card.active { z-index: 10; transform: rotate(0deg) translateY(0px); opacity: 1; }
+        .polaroid-card.below-1 { z-index: 9; transform: rotate(2.5deg) translateY(8px) scale(0.97); opacity: 0.9; }
+        .polaroid-card.below-2 { z-index: 8; transform: rotate(-2deg) translateY(14px) scale(0.94); opacity: 0.75; }
+        .polaroid-card.hidden { z-index: 7; transform: rotate(1deg) translateY(20px) scale(0.91); opacity: 0; pointer-events: none; }
+        .polaroid-card.swiping-out { transform: translateX(120%) rotate(15deg) !important; opacity: 0 !important; transition: transform 0.45s ease, opacity 0.3s ease !important; }
+        .polaroid-photo { flex: 1; margin: 12px 12px 8px 12px; background: var(--anti-flash-white); overflow: hidden; border-radius: 2px; }
+        .polaroid-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .polaroid-photo-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
-            color: #999;
-            font-size: 0.7rem;
-            font-family: var(--font-heading);
-            letter-spacing: 0.1rem;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 10px;
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #e8e8e8, #d0d0d0); color: #999;
+            font-size: 0.7rem; font-family: var(--font-heading); letter-spacing: 0.1rem;
+            text-transform: uppercase; text-align: center; padding: 10px;
         }
-        .polaroid-caption {
-            padding: 6px 14px 14px;
-            font-family: var(--font-handwritten);
-            font-size: 1rem;
-            color: #333;
-            text-align: center;
-            line-height: 1.3;
-        }
-
-        /* Swipe instruction */
-        .swipe-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 0; right: 0;
-            text-align: center;
-            color: rgba(255,255,255,0.45);
-            font-family: var(--font-heading);
-            font-size: 0.65rem;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-        }
-
-        /* Photo counter */
-        .photo-counter {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            color: rgba(255,255,255,0.5);
-            font-family: var(--font-heading);
-            font-size: 0.7rem;
-            letter-spacing: 0.15rem;
-        }
-
-        /* Close moments */
-        .moments-close {
-            position: absolute;
-            top: 22px;
-            left: 24px;
-            color: rgba(255,255,255,0.6);
-            font-family: var(--font-heading);
-            font-size: 0.65rem;
-            letter-spacing: 0.2rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: color 0.2s;
-            z-index: 20;
-        }
+        .polaroid-caption { padding: 6px 14px 14px; font-family: var(--font-handwritten); font-size: 1rem; color: #333; text-align: center; line-height: 1.3; }
+        .swipe-hint { position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.45); font-family: var(--font-heading); font-size: 0.65rem; letter-spacing: 0.2rem; text-transform: uppercase; }
+        .photo-counter { position: absolute; top: 24px; right: 24px; color: rgba(255,255,255,0.5); font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.15rem; }
+        .moments-close { position: absolute; top: 22px; left: 24px; color: rgba(255,255,255,0.6); font-family: var(--font-heading); font-size: 0.65rem; letter-spacing: 0.2rem; text-transform: uppercase; cursor: pointer; transition: color 0.2s; z-index: 20; }
         .moments-close:hover { color: white; }
 
         @media (max-width: 768px) {
-            .introduction { grid-template-columns: 1fr; padding: 60px 5%; }
+            .intro-grid { grid-template-columns: 1fr; gap: 40px; }
             .intro-image { height: 50vh; order: -1; }
             .menu-grid { grid-template-columns: 1fr; }
             .polaroid-wrapper { width: 240px; height: 300px; }
+            .introduction { padding: 70px 6%; }
         }
     </style>
 </head>
@@ -574,6 +600,9 @@
 
 <audio id="bgMusic" loop>
     <source src="hbd1.mp3" type="audio/mpeg">
+</audio>
+<audio id="msgMusic" loop>
+    <source src="msg_music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- =================== LANDING =================== -->
@@ -607,81 +636,111 @@
         <button class="btn-editorial" style="border-color: rgba(255,255,255,0.5); color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
     </div>
 
+    <!-- =================== INTRODUCTION REDESIGNED =================== -->
     <div class="introduction" id="intro-anchor">
-        <div class="intro-image">
-            <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 14px; font-size: 0.58rem; letter-spacing: 0.12rem; text-transform: uppercase; font-weight: 700; border-radius: 6px; font-family: var(--font-heading);">
-                26 Years of Excellence
+        <div class="intro-grid">
+
+            <div class="intro-image">
+                <div class="intro-img-badge">26 Years of Excellence</div>
             </div>
-        </div>
 
-        <div class="intro-text">
-            <h2>A Portrait at 26</h2>
-            <div class="intro-name">Zain.</div>
-            <p style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px; font-size: 0.92rem; color: var(--prussian-blue);">
-                Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
-            </p>
+            <div class="intro-text-col">
+                <p class="intro-eyebrow">A Portrait at 26</p>
+                <div class="intro-name">Zain.</div>
+                <p class="intro-desc">
+                    Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
+                </p>
 
-            <div style="margin-top: 30px;">
-                <div class="stat-label">
-                    <span>Intellectual Depth</span>
-                    <span style="color: var(--sinopia-red);">98%</span>
+                <div class="stat-block">
+                    <div class="stat-label"><span>Intellectual Depth</span><span style="color:var(--sinopia-red)">98%</span></div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:98%"></div></div>
                 </div>
-                <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
-
-                <div class="stat-label">
-                    <span>Leadership & Guidance</span>
-                    <span>⭐⭐⭐⭐⭐</span>
+                <div class="stat-block">
+                    <div class="stat-label"><span>Leadership & Guidance</span><span>⭐⭐⭐⭐⭐</span></div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:95%"></div></div>
                 </div>
-                <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                <div class="stat-block">
+                    <div class="stat-label"><span>Ambition Drive</span><span style="color:var(--sinopia-red)">MAX</span></div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width:100%"></div></div>
+                </div>
 
-                <div style="margin-bottom: 30px;">
-                    <div class="stat-label">
-                        <span>Ambition Drive</span>
-                        <span style="color: var(--sinopia-red);">MAX</span>
+                <!-- Clickable trait badges -->
+                <div class="traits-row">
+                    <div class="trait-badge" onclick="toggleTrait(this)">
+                        Optimistic
+                        <div class="trait-tooltip">Even on the hardest days, this guy somehow still believes things will work out — and honestly? He's usually right. 🌤️</div>
                     </div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 100%; background: var(--sinopia-red);"></div></div>
+                    <div class="trait-badge" onclick="toggleTrait(this)">
+                        Stubborn
+                        <div class="trait-tooltip">Once he's set his mind on something, there's literally no turning back. A blessing and a curse — but mostly a blessing. 💪</div>
+                    </div>
+                    <div class="trait-badge" onclick="toggleTrait(this)">
+                        Dream Chaser
+                        <div class="trait-tooltip">He doesn't just talk about his dreams — he actually goes after them. Building an empire at 26? That's not luck, that's Zain. 🚀</div>
+                    </div>
+                    <div class="trait-badge" onclick="toggleTrait(this)" style="border-color:rgba(204,54,30,0.4); color:rgba(204,54,30,0.9)">
+                        Spoiled (Home Edition)
+                        <div class="trait-tooltip">At home, he is THE main character. Full drama, full service expected, full comfort required. We love him anyway. 😂👑</div>
+                    </div>
                 </div>
 
-                <div style="margin-bottom: 28px;">
-                    <span class="trait-badge">Optimistic</span>
-                    <span class="trait-badge">Stubborn</span>
-                    <span class="trait-badge">Dream Chaser</span>
-                    <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
+                <!-- Achievement carousel -->
+                <div class="achievement-section">
+                    <p class="ach-label">Achievements Unlocked</p>
+                    <div class="ach-track-outer">
+                        <div class="ach-track" id="achTrack">
+                            <div class="ach-card">
+                                <span class="ach-emoji">✨</span>
+                                <h3>BUSINESS OWNER</h3>
+                                <p>From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.</p>
+                            </div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">🚗</span>
+                                <h3>UBER DRIVER ERA</h3>
+                                <p>Tried something completely new — hit the road, met strangers, lived different lives for a moment. That takes guts.</p>
+                            </div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">🌍</span>
+                                <h3>EXPERIENCE COLLECTOR</h3>
+                                <p>Never afraid to try new things. From new skills to new roles — Zain doesn't just live life, he explores it fully.</p>
+                            </div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">🧠</span>
+                                <h3>FULLY DEVELOPED BRAIN</h3>
+                                <p>Officially 26 — the science says your brain is complete. Yet somehow you still manage to be chaotic. Iconic.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ach-nav" id="achNav"></div>
                 </div>
 
-                <div class="achievement-box">
-                    <p class="ach-label">Achievement Unlocked</p>
-                    <h3>BUSINESS OWNER ✨</h3>
-                    <p>From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.</p>
-                </div>
+                <button class="btn-editorial" style="border-color:rgba(239,239,239,0.3); color:var(--anti-flash-white); margin-top: 40px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
             </div>
-
-            <button class="btn-editorial" style="margin-top: 40px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
         </div>
     </div>
 
+    <!-- CHAPTERS -->
     <div class="chapters" id="chapters">
         <div class="section-header">
             <p>Curated Collections</p>
             <h2>Explore Moments</h2>
         </div>
-
         <div class="menu-grid">
             <div class="menu-item" onclick="window.open('https://music.youtube.com/playlist?list=PLfrx2LKIvMTnoLAC_mQ5uQJEf6tRbDDTH&si=4z7Ed4Tl05pcUvlx', '_blank')">
                 <h3>Playlist</h3>
-                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The sound that reminds me of u</p>
+                <p style="font-size:0.7rem;letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">The sound that reminds me of u</p>
             </div>
             <div class="menu-item" onclick="openMoments()">
                 <h3>Moments</h3>
-                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">A Visual Timeline</p>
+                <p style="font-size:0.7rem;letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">A Visual Timeline</p>
             </div>
             <div class="menu-item" onclick="showModal('message')">
                 <h3>Message</h3>
-                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">Words From Me</p>
+                <p style="font-size:0.7rem;letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">Words From Me</p>
             </div>
             <div class="menu-item" onclick="showModal('gift')">
                 <h3>Gift</h3>
-                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The Final Piece</p>
+                <p style="font-size:0.7rem;letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">The Final Piece</p>
             </div>
         </div>
     </div>
@@ -695,12 +754,12 @@
     <h3>A Message for You</h3>
     <div class="book-container">
         <div class="book-page active" id="page-1">
-            <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8;">
+            <p style="margin:20px 0;font-size:0.95rem;line-height:1.8;">
                 "Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"
             </p>
         </div>
         <div class="book-page" id="page-2">
-            <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8; text-align: left;">
+            <p style="margin:20px 0;font-size:0.95rem;line-height:1.8;text-align:left;">
                 HI HELLO, how r u??????<br><br>
                 how does it feels like to live at your early 26?<br><br>
                 someone said, the human brain has completed development at the age of 25. Now u complete all that phases but how can u still be childish?!?!?
@@ -708,8 +767,8 @@
         </div>
     </div>
     <div class="page-nav">
-        <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility: hidden;">&larr; Back</span>
-        <span style="font-size: 0.7rem; color: var(--silver); font-family: var(--font-heading);" id="pageIndicator">1 / 2</span>
+        <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility:hidden;">&larr; Back</span>
+        <span style="font-size:0.7rem;color:var(--silver);font-family:var(--font-heading);" id="pageIndicator">1 / 2</span>
         <span class="nav-link" id="nextBtn" onclick="changePage(1)">Next &rarr;</span>
     </div>
     <button class="btn-editorial" onclick="closeModal()">Close</button>
@@ -718,98 +777,121 @@
 <div class="modal" id="modal-gift">
     <h3>Your Gift</h3>
     <div class="puzzle-box">
-        <p style="color: #999; font-style: italic;">[ Missing Piece ]</p>
+        <p style="color:#999;font-style:italic;">[ Missing Piece ]</p>
     </div>
-    <p style="margin-bottom: 10px;">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
-    <p style="font-size: 1.5rem; color: var(--sinopia-red); font-family: var(--font-serif);">See u later!</p>
+    <p style="margin-bottom:10px;">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
+    <p style="font-size:1.5rem;color:var(--sinopia-red);font-family:var(--font-serif);">See u later!</p>
     <button class="btn-editorial" onclick="closeModal()">Close</button>
 </div>
 
 <!-- =================== MOMENTS FULLSCREEN =================== -->
 <div class="modal-moments" id="modal-moments">
     <div class="moments-bg"></div>
-
-    <!-- Floating handwritten birthday words -->
     <div class="floating-words" id="floatingWords"></div>
-
     <span class="moments-close" onclick="closeMoments()">← Back</span>
     <div class="photo-counter" id="photoCounter">1 / 5</div>
-
     <div class="polaroid-stage">
-        <div class="polaroid-wrapper" id="polaroidWrapper">
-            <!-- Cards generated by JS -->
-        </div>
+        <div class="polaroid-wrapper" id="polaroidWrapper"></div>
     </div>
-
     <div class="swipe-hint">tap or swipe to see next →</div>
 </div>
 
 <script>
     // ============================================================
-    // FOTO-FOTO KAMU — edit bagian ini aja!
-    // Ganti src dengan path foto kamu, caption bebas diedit
-    // Kalau mau tambah foto, tinggal tambah object baru di array
+    // FOTO — ganti src dengan nama file foto kamu
     // ============================================================
     const photos = [
-        { src: '',  caption: 'add your photo here ✨' },
-        { src: '',  caption: 'another memory 🌙' },
-        { src: '',  caption: 'good times 🎉' },
-        { src: '',  caption: 'always 💙' },
-        { src: '',  caption: 'the legend 👑' },
+        { src: '', caption: 'add your photo here ✨' },
+        { src: '', caption: 'another memory 🌙' },
+        { src: '', caption: 'good times 🎉' },
+        { src: '', caption: 'always 💙' },
+        { src: '', caption: 'the legend 👑' },
     ];
     // ============================================================
 
     const floatingTexts = [
-        'happy birthday!', 'make a wish ✨', 'you deserve the world',
-        'cheers to 26 🥂', 'keep shining', 'dream big always',
-        'you\'re amazing', 'happy bday zain!', 'so proud of you',
-        'level 26 unlocked', 'blessed soul', 'another year wiser',
-        'here\'s to you', 'celebrate good times', 'stay golden ✨',
-        'love & light', 'congrats!', 'you made it!',
-        'the odyssey continues', 'what a journey', 'birthday boy 🎂',
+        'happy birthday!','make a wish ✨','you deserve the world',
+        'cheers to 26 🥂','keep shining','dream big always',
+        'you\'re amazing','happy bday zain!','so proud of you',
+        'level 26 unlocked','blessed soul','another year wiser',
+        'here\'s to you','celebrate good times','stay golden ✨',
+        'love & light','congrats!','you made it!',
+        'the odyssey continues','what a journey','birthday boy 🎂',
     ];
 
-    let currentCard = 0;
-    let totalCards = photos.length;
+    /* ---- AUDIO ---- */
+    const bgMusic  = document.getElementById('bgMusic');
+    const msgMusic = document.getElementById('msgMusic');
 
-    // Build floating words
+    /* ---- TRAIT BADGES ---- */
+    function toggleTrait(el) {
+        const wasActive = el.classList.contains('active-trait');
+        document.querySelectorAll('.trait-badge').forEach(b => b.classList.remove('active-trait'));
+        if (!wasActive) el.classList.add('active-trait');
+    }
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.trait-badge')) {
+            document.querySelectorAll('.trait-badge').forEach(b => b.classList.remove('active-trait'));
+        }
+    });
+
+    /* ---- ACHIEVEMENT CAROUSEL ---- */
+    let achIndex = 0;
+    const achCards = document.querySelectorAll('.ach-card');
+    const achNav   = document.getElementById('achNav');
+    const achTrack = document.getElementById('achTrack');
+    const cardW    = 234; // card min-width + gap
+
+    achCards.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'ach-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => scrollAch(i);
+        achNav.appendChild(dot);
+    });
+
+    function scrollAch(idx) {
+        achIndex = idx;
+        achTrack.style.transform = `translateX(-${idx * cardW}px)`;
+        document.querySelectorAll('.ach-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    // Auto-scroll every 3s
+    setInterval(() => scrollAch((achIndex + 1) % achCards.length), 3000);
+
+    /* ---- MOMENTS ---- */
+    let currentCard = 0;
+    let totalCards  = photos.length;
+
     function buildFloatingWords() {
         const container = document.getElementById('floatingWords');
         container.innerHTML = '';
-        const sizes = [1, 1.2, 1.5, 1.8, 2.2, 2.8, 3.5];
+        const sizes  = [1, 1.2, 1.5, 1.8, 2.2, 2.8, 3.5];
         const angles = [-25, -15, -8, 0, 8, 15, 25];
         floatingTexts.forEach((text, i) => {
             const el = document.createElement('span');
             el.className = 'fw';
             el.textContent = text;
-            const size = sizes[i % sizes.length];
-            const angle = angles[i % angles.length];
-            el.style.fontSize = size + 'rem';
-            el.style.transform = `rotate(${angle}deg)`;
-            el.style.top = (5 + (i * 13.7) % 88) + '%';
+            el.style.fontSize  = sizes[i % sizes.length] + 'rem';
+            el.style.transform = `rotate(${angles[i % angles.length]}deg)`;
+            el.style.top  = (5 + (i * 13.7) % 88) + '%';
             el.style.left = ((i * 17.3) % 90) + '%';
             container.appendChild(el);
         });
     }
 
-    // Build polaroid cards
     function buildPolaroids() {
         const wrapper = document.getElementById('polaroidWrapper');
         wrapper.innerHTML = '';
         totalCards = photos.length;
-
         photos.forEach((photo, i) => {
             const card = document.createElement('div');
             card.className = 'polaroid-card';
             card.dataset.index = i;
-
             const photoDiv = document.createElement('div');
             photoDiv.className = 'polaroid-photo';
-
             if (photo.src) {
                 const img = document.createElement('img');
-                img.src = photo.src;
-                img.alt = photo.caption;
+                img.src = photo.src; img.alt = photo.caption;
                 photoDiv.appendChild(img);
             } else {
                 const ph = document.createElement('div');
@@ -817,30 +899,25 @@
                 ph.textContent = 'Add your photo here';
                 photoDiv.appendChild(ph);
             }
-
             const caption = document.createElement('div');
             caption.className = 'polaroid-caption';
             caption.textContent = photo.caption;
-
             card.appendChild(photoDiv);
             card.appendChild(caption);
             card.addEventListener('click', nextCard);
             wrapper.appendChild(card);
         });
-
-        updateCardClasses();
-        updateCounter();
+        updateCardClasses(); updateCounter();
     }
 
     function updateCardClasses() {
-        const cards = document.querySelectorAll('.polaroid-card');
-        cards.forEach((card, i) => {
-            card.classList.remove('active', 'below-1', 'below-2', 'hidden');
+        document.querySelectorAll('.polaroid-card').forEach((card, i) => {
+            card.classList.remove('active','below-1','below-2','hidden');
             const diff = i - currentCard;
-            if (diff === 0) card.classList.add('active');
+            if (diff === 0)      card.classList.add('active');
             else if (diff === 1) card.classList.add('below-1');
             else if (diff === 2) card.classList.add('below-2');
-            else card.classList.add('hidden');
+            else                 card.classList.add('hidden');
         });
     }
 
@@ -850,24 +927,22 @@
 
     function nextCard() {
         if (currentCard >= totalCards - 1) return;
-        const cards = document.querySelectorAll('.polaroid-card');
+        const cards  = document.querySelectorAll('.polaroid-card');
         const active = cards[currentCard];
         active.classList.add('swiping-out');
         setTimeout(() => {
-            active.classList.remove('active', 'swiping-out');
+            active.classList.remove('active','swiping-out');
             active.classList.add('hidden');
             currentCard++;
-            updateCardClasses();
-            updateCounter();
+            updateCardClasses(); updateCounter();
         }, 420);
     }
 
     function openMoments() {
-        buildFloatingWords();
-        buildPolaroids();
-        currentCard = 0;
-        updateCardClasses();
-        updateCounter();
+        // Stop bg music when entering moments
+        bgMusic.pause();
+        buildFloatingWords(); buildPolaroids();
+        currentCard = 0; updateCardClasses(); updateCounter();
         document.getElementById('modal-moments').style.display = 'block';
         document.body.style.overflow = 'hidden';
     }
@@ -875,25 +950,21 @@
     function closeMoments() {
         document.getElementById('modal-moments').style.display = 'none';
         document.body.style.overflow = '';
+        // Resume bg music
+        bgMusic.play().catch(() => {});
     }
 
-    // Touch/swipe support for polaroid
+    // Swipe support
     let touchStartX = 0;
-    document.getElementById('polaroidWrapper')?.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-    });
     document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
     document.addEventListener('touchend', e => {
-        if (!document.getElementById('modal-moments').style.display || document.getElementById('modal-moments').style.display === 'none') return;
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (diff > 40) nextCard();
+        if (document.getElementById('modal-moments').style.display !== 'block') return;
+        if (touchStartX - e.changedTouches[0].clientX > 40) nextCard();
     }, {passive: true});
 
-    // ============================================================
-    // EXISTING FUNCTIONS
-    // ============================================================
+    /* ---- CORE FUNCTIONS ---- */
     let currentMsgPage = 1;
-    const totalPages = 2;
+    const totalPages   = 2;
 
     function showGateway() {
         document.getElementById('landing').style.display = 'none';
@@ -903,16 +974,10 @@
     function checkPass() {
         const pass = document.getElementById('passInput').value;
         if (pass === '160426') {
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#CC361E', '#224766', '#ffffff', '#2d4a22']
-            });
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#CC361E','#224766','#ffffff','#2d4a22'] });
             document.getElementById('gateway').style.display = 'none';
             document.getElementById('main-page').style.display = 'block';
-            const music = document.getElementById('bgMusic');
-            music.play().catch(e => console.log("Audio play blocked by browser"));
+            bgMusic.play().catch(() => {});
         } else {
             alert('Wrong code!');
             document.getElementById('hintText').style.display = 'block';
@@ -932,6 +997,10 @@
         document.getElementById('overlay').style.display = 'block';
         document.getElementById('modal-' + type).style.display = 'block';
         if (type === 'message') {
+            // Switch to message music
+            bgMusic.pause();
+            msgMusic.currentTime = 0;
+            msgMusic.play().catch(() => {});
             currentMsgPage = 1;
             document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
             document.getElementById('page-1').classList.add('active');
@@ -944,6 +1013,10 @@
     function closeModal() {
         document.getElementById('overlay').style.display = 'none';
         document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        // Stop message music, resume bg
+        msgMusic.pause();
+        msgMusic.currentTime = 0;
+        bgMusic.play().catch(() => {});
     }
 </script>
 </body>
