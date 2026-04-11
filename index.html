@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAIN | THE ODYSSEY AT 26</title>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
     <style>
         :root {
-            --prussian-blue: #122435; 
-            --indigo-dye: #224766;    
-            --sinopia-red: #CC361E;   
-            --anti-flash-white: #EFEFEF; 
-            --silver: #B3B3B3;        
+            --prussian-blue: #122435;
+            --indigo-dye: #224766;
+            --sinopia-red: #CC361E;
+            --anti-flash-white: #EFEFEF;
+            --silver: #B3B3B3;
             --font-display: 'Bebas Neue', sans-serif;
             --font-heading: 'Barlow Condensed', sans-serif;
             --font-serif: 'DM Serif Display', Georgia, serif;
-            --font-body: 'Roboto', sans-serif; 
+            --font-body: 'Roboto', sans-serif;
+            --font-handwritten: 'Caveat', cursive;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,7 +34,6 @@
         }
 
         h1, h2, h3 { font-family: var(--font-heading); font-weight: 800; }
-        .serif-text { font-family: var(--font-serif); }
 
         .btn-editorial {
             padding: 13px 34px;
@@ -59,6 +57,7 @@
             box-shadow: 0 8px 24px rgba(18,36,53,0.18);
         }
 
+        /* =================== LANDING =================== */
         #landing {
             height: 100vh;
             display: flex;
@@ -69,7 +68,6 @@
             position: relative;
             overflow: hidden;
         }
-
         #landing::before {
             content: '';
             position: absolute;
@@ -88,9 +86,7 @@
             border-radius: 50%;
             pointer-events: none;
         }
-
         .landing-content { text-align: center; max-width: 640px; position: relative; z-index: 1; }
-
         .landing-content h2 {
             font-family: var(--font-display);
             font-size: clamp(3.5rem, 12vw, 6.5rem);
@@ -99,9 +95,7 @@
             letter-spacing: 0.04em;
             margin-bottom: 10px;
         }
-
         .landing-content h2 span { color: var(--sinopia-red); }
-
         .landing-eyebrow {
             font-size: 0.65rem;
             letter-spacing: 0.4rem;
@@ -111,7 +105,6 @@
             font-family: var(--font-heading);
             margin-bottom: 4px;
         }
-
         .landing-content .btn-editorial {
             border-color: rgba(239,239,239,0.5);
             color: var(--anti-flash-white);
@@ -123,6 +116,7 @@
             border-color: var(--anti-flash-white);
         }
 
+        /* =================== GATEWAY =================== */
         #gateway {
             display: none;
             height: 100vh;
@@ -135,15 +129,57 @@
             position: relative;
             overflow: hidden;
         }
-
+        #gateway::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -80px;
+            width: 340px; height: 340px;
+            border: 2px solid rgba(204,54,30,0.12);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        #gateway::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -60px;
+            width: 260px; height: 260px;
+            background: rgba(204,54,30,0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .gateway-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gateway-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.4rem;
+            text-transform: uppercase;
+            color: var(--sinopia-red);
+            font-weight: 700;
+            font-family: var(--font-heading);
+            margin-bottom: 12px;
+        }
         #gateway h2 {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-size: clamp(2.5rem, 10vw, 5rem);
             letter-spacing: 0.06em;
-            margin-bottom: 30px;
+            margin-bottom: 8px;
             color: var(--anti-flash-white);
+            line-height: 1;
         }
-
+        .gateway-sub {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--silver);
+            font-size: 0.82rem;
+            letter-spacing: 0.1rem;
+            margin-bottom: 40px;
+        }
         .pass-input {
             background: transparent;
             border: none;
@@ -156,10 +192,23 @@
             width: 100%;
             max-width: 350px;
             font-weight: 100;
+            letter-spacing: 0.3em;
         }
+        .gateway-btn {
+            border-color: rgba(239,239,239,0.4);
+            color: var(--anti-flash-white);
+        }
+        .gateway-btn:hover {
+            background: var(--anti-flash-white);
+            color: var(--prussian-blue);
+            border-color: var(--anti-flash-white);
+        }
+        .hint { color: var(--silver); margin-top: 15px; font-size: 0.75rem; font-family: var(--font-body); }
 
+        /* =================== MAIN PAGE =================== */
         #main-page { display: none; }
 
+        /* HERO */
         .hero-birthday {
             height: 100vh;
             display: flex;
@@ -175,7 +224,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-birthday::after {
             content: '';
             position: absolute;
@@ -184,7 +232,6 @@
             background: linear-gradient(to bottom, transparent, rgba(239,239,239,0.12));
             pointer-events: none;
         }
-
         .hero-birthday p {
             font-family: var(--font-heading);
             font-weight: 600;
@@ -194,7 +241,6 @@
             opacity: 0.75;
             margin-bottom: 8px;
         }
-
         .hero-birthday h1 {
             font-family: var(--font-display);
             font-size: clamp(5rem, 22vw, 14rem);
@@ -206,6 +252,7 @@
             color: var(--anti-flash-white);
         }
 
+        /* INTRODUCTION */
         .introduction {
             padding: 90px 10%;
             display: grid;
@@ -214,7 +261,6 @@
             align-items: start;
             background-color: var(--anti-flash-white);
         }
-
         .intro-image {
             position: relative;
             background-image: url('zain 1.jpeg');
@@ -225,7 +271,6 @@
             border-radius: 20px;
             overflow: hidden;
         }
-
         .intro-text h2 {
             font-family: var(--font-body);
             font-size: 0.7rem;
@@ -235,7 +280,6 @@
             margin-bottom: 10px;
             font-weight: 300;
         }
-
         .intro-name {
             font-family: var(--font-display);
             font-size: clamp(4rem, 10vw, 6rem);
@@ -244,17 +288,15 @@
             letter-spacing: 0.04em;
             margin-bottom: 18px;
         }
-
-        .stat-bar-bg { 
-            width: 100%; height: 10px; 
-            background: #ddd; position: relative; 
+        .stat-bar-bg {
+            width: 100%; height: 10px;
+            background: #ddd; position: relative;
             margin-bottom: 20px; border-radius: 10px; overflow: hidden;
         }
-        .stat-bar-fill { 
-            height: 100%; background: var(--prussian-blue); 
+        .stat-bar-fill {
+            height: 100%; background: var(--prussian-blue);
             position: absolute; left: 0; top: 0; border-radius: 10px;
         }
-
         .stat-label {
             display: flex;
             justify-content: space-between;
@@ -265,37 +307,36 @@
             font-family: var(--font-heading);
             font-weight: 600;
         }
-
-        .trait-badge { 
-            border: 1.5px solid var(--silver); 
-            padding: 7px 15px; font-size: 0.62rem; 
-            text-transform: uppercase; letter-spacing: 0.1rem; 
+        .trait-badge {
+            border: 1.5px solid var(--silver);
+            padding: 7px 15px; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.1rem;
             display: inline-block; margin: 0 5px 10px 0;
             border-radius: 50px; font-family: var(--font-heading); font-weight: 600;
         }
+        .achievement-box { background: white; padding: 25px; border-left: 6px solid var(--indigo-dye); border-radius: 0 15px 15px 0; box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05); }
+        .achievement-box .ach-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--indigo-dye); font-weight: 700; font-family: var(--font-heading); }
+        .achievement-box h3 { font-family: var(--font-display); font-size: 1.7rem; color: var(--prussian-blue); margin: 6px 0; letter-spacing: 0.04em; }
+        .achievement-box p { font-size: 0.8rem; color: var(--silver); font-weight: 300; }
 
+        /* CHAPTERS */
         .chapters { padding: 90px 10%; background-color: white; }
-
         .section-header { text-align: center; margin-bottom: 54px; }
-
         .section-header p {
             font-size: 0.68rem; letter-spacing: 0.25rem;
             color: var(--silver); text-transform: uppercase;
             font-family: var(--font-heading); font-weight: 600; margin-bottom: 8px;
         }
-
         .section-header h2 {
             font-family: var(--font-display);
             font-size: clamp(2.4rem, 6vw, 3.8rem);
             color: var(--prussian-blue); letter-spacing: 0.04em;
         }
-
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px; max-width: 1000px; margin: 0 auto;
         }
-
         .menu-item {
             background-color: var(--anti-flash-white);
             min-height: 180px; display: flex; flex-direction: column;
@@ -304,26 +345,23 @@
             border-radius: 16px; border: 1.5px solid transparent;
             position: relative; overflow: hidden;
         }
-
         .menu-item::before {
             content: ''; position: absolute; bottom: 0; left: 0;
             width: 0; height: 3px; background: var(--sinopia-red);
             transition: width 0.35s ease; border-radius: 0 0 0 16px;
         }
-
         .menu-item:hover::before { width: 100%; }
         .menu-item:hover { background-color: var(--prussian-blue); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(18,36,53,0.15); }
         .menu-item:hover h3 { color: var(--anti-flash-white); }
         .menu-item:hover p { color: var(--silver) !important; }
-
         .menu-item h3 {
             font-family: var(--font-display); font-size: 2rem;
             letter-spacing: 0.06em; color: var(--prussian-blue);
             transition: color 0.35s ease; margin-bottom: 6px;
         }
-
         .menu-item p { transition: color 0.35s ease; }
 
+        /* =================== MODALS =================== */
         .modal {
             display: none; position: fixed;
             top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -333,12 +371,10 @@
             box-shadow: 0 24px 60px rgba(0,0,0,0.22);
             border-radius: 0 18px 18px 0;
         }
-
         .modal h3 {
             font-family: var(--font-display); font-size: 2rem;
             letter-spacing: 0.06em; color: var(--prussian-blue); margin-bottom: 4px;
         }
-
         .book-container { position: relative; min-height: 200px; display: flex; flex-direction: column; justify-content: center; }
         .book-page { display: none; animation: fadeIn 0.5s ease; }
         .book-page.active { display: block; }
@@ -353,228 +389,562 @@
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(18, 36, 53, 0.92); z-index: 999; backdrop-filter: blur(4px);
         }
-
         .puzzle-box {
             width: 150px; height: 150px; margin: 20px auto;
             border: 1px dashed var(--silver); display: flex; align-items: center;
             justify-content: center; background-color: var(--anti-flash-white); border-radius: 12px;
         }
 
-        .achievement-box { background: white; padding: 25px; border-left: 6px solid var(--indigo-dye); border-radius: 0 15px 15px 0; box-shadow: 10px 10px 0px rgba(18, 36, 53, 0.05); }
-        .achievement-box .ach-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--indigo-dye); font-weight: 700; font-family: var(--font-heading); }
-        .achievement-box h3 { font-family: var(--font-display); font-size: 1.7rem; color: var(--prussian-blue); margin: 6px 0; letter-spacing: 0.04em; }
-        .achievement-box p { font-size: 0.8rem; color: var(--silver); font-weight: 300; }
+        /* =================== MOMENTS MODAL =================== */
+        .modal-moments {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1000;
+            overflow: hidden;
+        }
 
-        .hint { color: var(--silver); margin-top: 15px; font-size: 0.75rem; font-family: var(--font-body); }
+        /* Birthday background */
+        .moments-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+            overflow: hidden;
+        }
+        .moments-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(204,54,30,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(34,71,102,0.15) 0%, transparent 50%);
+        }
+
+        /* Floating handwritten texts */
+        .floating-words {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .fw {
+            position: absolute;
+            font-family: var(--font-handwritten);
+            color: rgba(255,255,255,0.07);
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        /* Polaroid stack */
+        .polaroid-stage {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .polaroid-wrapper {
+            position: relative;
+            width: 280px;
+            height: 340px;
+        }
+        .polaroid-card {
+            position: absolute;
+            inset: 0;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+        .polaroid-card.active {
+            z-index: 10;
+            transform: rotate(0deg) translateY(0px);
+            opacity: 1;
+        }
+        .polaroid-card.below-1 {
+            z-index: 9;
+            transform: rotate(2.5deg) translateY(8px) scale(0.97);
+            opacity: 0.9;
+        }
+        .polaroid-card.below-2 {
+            z-index: 8;
+            transform: rotate(-2deg) translateY(14px) scale(0.94);
+            opacity: 0.75;
+        }
+        .polaroid-card.hidden {
+            z-index: 7;
+            transform: rotate(1deg) translateY(20px) scale(0.91);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .polaroid-card.swiping-out {
+            transform: translateX(120%) rotate(15deg) !important;
+            opacity: 0 !important;
+            transition: transform 0.45s ease, opacity 0.3s ease !important;
+        }
+        .polaroid-photo {
+            flex: 1;
+            margin: 12px 12px 8px 12px;
+            background: var(--anti-flash-white);
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .polaroid-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Placeholder when no image */
+        .polaroid-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+            color: #999;
+            font-size: 0.7rem;
+            font-family: var(--font-heading);
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 10px;
+        }
+        .polaroid-caption {
+            padding: 6px 14px 14px;
+            font-family: var(--font-handwritten);
+            font-size: 1rem;
+            color: #333;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        /* Swipe instruction */
+        .swipe-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 0; right: 0;
+            text-align: center;
+            color: rgba(255,255,255,0.45);
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+        }
+
+        /* Photo counter */
+        .photo-counter {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            color: rgba(255,255,255,0.5);
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            letter-spacing: 0.15rem;
+        }
+
+        /* Close moments */
+        .moments-close {
+            position: absolute;
+            top: 22px;
+            left: 24px;
+            color: rgba(255,255,255,0.6);
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 20;
+        }
+        .moments-close:hover { color: white; }
 
         @media (max-width: 768px) {
             .introduction { grid-template-columns: 1fr; padding: 60px 5%; }
             .intro-image { height: 50vh; order: -1; }
             .menu-grid { grid-template-columns: 1fr; }
+            .polaroid-wrapper { width: 240px; height: 300px; }
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="hbd1.mp3" type="audio/mpeg">
-    </audio>
+<audio id="bgMusic" loop>
+    <source src="hbd1.mp3" type="audio/mpeg">
+</audio>
 
-    <section id="landing">
-        <div class="landing-content">
-            <p class="landing-eyebrow">A little something for you</p>
-            <h2>The Odyssey of <span>Zain</span></h2>
-            <h2 style="font-size: clamp(1.6rem, 6vw, 3rem); color: var(--silver); margin-top: -4px;">at Twenty Six</h2>
-            <button class="btn-editorial" onclick="showGateway()">Start Journey</button>
-        </div>
-    </section>
+<!-- =================== LANDING =================== -->
+<section id="landing">
+    <div class="landing-content">
+        <p class="landing-eyebrow">A little something for you</p>
+        <h2>The Odyssey of <span>Zain</span></h2>
+        <h2 style="font-size: clamp(1.6rem, 6vw, 3rem); color: var(--silver); margin-top: -4px;">at Twenty Six</h2>
+        <button class="btn-editorial" onclick="showGateway()">Start Journey</button>
+    </div>
+</section>
 
-    <section id="gateway">
+<!-- =================== GATEWAY =================== -->
+<section id="gateway">
+    <div class="gateway-inner">
+        <p class="gateway-eyebrow">Private Access</p>
         <h2>Enter Access Code</h2>
-        <input type="password" id="passInput" class="pass-input" placeholder="000000" maxlength="6">
-        <button class="btn-editorial" style="border-color: rgba(239,239,239,0.5); color: white;" onclick="checkPass()">Unlock</button>
+        <p class="gateway-sub">only the chosen one may enter</p>
+        <input type="password" id="passInput" class="pass-input" placeholder="······" maxlength="6">
+        <button class="btn-editorial gateway-btn" onclick="checkPass()">Unlock</button>
         <p id="hintText" class="hint" style="display:none;">Hint: well u are old now whopss</p>
-    </section>
+    </div>
+</section>
 
-    <section id="main-page">
-        <div class="hero-birthday">
-            <p>Happy 26th Birthday</p>
-            <h1>ZAIN.</h1>
-            <button class="btn-editorial" style="border-color: rgba(255,255,255,0.5); color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
-        </div>
+<!-- =================== MAIN PAGE =================== -->
+<section id="main-page">
 
-        <div class="introduction" id="intro-anchor">
-            <div class="intro-image">
-                <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 14px; font-size: 0.58rem; letter-spacing: 0.12rem; text-transform: uppercase; font-weight: 700; border-radius: 6px; font-family: var(--font-heading);">
-                    26 Years of Excellence
-                </div>
-            </div>
-            
-            <div class="intro-text">
-                <h2>A Portrait at 26</h2>
-                <div class="intro-name">Zain.</div>
-                <p style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px; font-size: 0.92rem; color: var(--prussian-blue);">
-                    Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
-                </p>
-
-                <div style="margin-top: 30px;">
-                    <div class="stat-label">
-                        <span>Intellectual Depth</span>
-                        <span style="color: var(--sinopia-red);">98%</span>
-                    </div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
-
-                    <div class="stat-label">
-                        <span>Leadership & Guidance</span>
-                        <span>⭐⭐⭐⭐⭐</span>
-                    </div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
-                    
-                    <div style="margin-bottom: 30px;">
-                        <div class="stat-label">
-                           <span>Ambition Drive</span>
-                            <span style="color: var(--sinopia-red);">MAX</span>
-                        </div>
-                        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 100%; background: var(--sinopia-red);"></div></div>
-                    </div>
-
-                    <div style="margin-bottom: 28px;">
-                        <span class="trait-badge">Optimistic</span>
-                        <span class="trait-badge">Stubborn</span>
-                        <span class="trait-badge">Dream Chaser</span>
-                        <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
-                    </div>
-
-                    <div class="achievement-box">
-                        <p class="ach-label">Achievement Unlocked</p>
-                        <h3>BUSINESS OWNER ✨</h3>
-                        <p>From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.</p>
-                    </div>
-                </div>
-
-                <button class="btn-editorial" style="margin-top: 40px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
-            </div>
-        </div>
-
-        <div class="chapters" id="chapters">
-            <div class="section-header">
-                <p>Curated Collections</p>
-                <h2>Explore Moments</h2>
-            </div>
-
-            <div class="menu-grid">
-                <div class="menu-item" onclick="window.open('LINK_SPOTIFY_KAMU', '_blank')">
-                    <h3>Playlist</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The sound that reminds me of u</p>
-                </div>
-                <div class="menu-item" onclick="alert('Open your photo gallery here!')">
-                    <h3>Moments</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">A Visual Timeline</p>
-                </div>
-                <div class="menu-item" onclick="showModal('message')">
-                    <h3>Message</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">Words From Me</p>
-                </div>
-                <div class="menu-item" onclick="showModal('gift')">
-                    <h3>Gift</h3>
-                    <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The Final Piece</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="overlay" id="overlay" onclick="closeModal()"></div>
-    
-    <div class="modal" id="modal-message">
-        <h3>A Message for You</h3>
-        <div class="book-container">
-            <div class="book-page active" id="page-1">
-                <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8;">
-                    "Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"
-                </p>
-            </div>
-            <div class="book-page" id="page-2">
-                <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8; text-align: left;">
-                    HI HELLO, how r u??????<br><br>
-                    how does it feels like to live at your early 26?<br><br>
-                    someone said, the human brain has completed development at the age of 25. Now u complete all that phases but how can u still be childish?!?!?
-                </p>
-            </div>
-        </div>
-
-        <div class="page-nav">
-            <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility: hidden;">&larr; Back</span>
-            <span style="font-size: 0.7rem; color: var(--silver); font-family: var(--font-heading);" id="pageIndicator">1 / 2</span>
-            <span class="nav-link" id="nextBtn" onclick="changePage(1)">Next &rarr;</span>
-        </div>
-
-        <button class="btn-editorial" onclick="closeModal()">Close</button>
+    <div class="hero-birthday">
+        <p>Happy 26th Birthday</p>
+        <h1>ZAIN.</h1>
+        <button class="btn-editorial" style="border-color: rgba(255,255,255,0.5); color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
     </div>
 
-    <div class="modal" id="modal-gift">
-        <h3>Your Gift</h3>
-        <div class="puzzle-box">
-            <p style="color: #999; font-style: italic;">[ Missing Piece ]</p>
+    <div class="introduction" id="intro-anchor">
+        <div class="intro-image">
+            <div style="position: absolute; top: 15px; right: 15px; background: var(--sinopia-red); color: white; padding: 8px 14px; font-size: 0.58rem; letter-spacing: 0.12rem; text-transform: uppercase; font-weight: 700; border-radius: 6px; font-family: var(--font-heading);">
+                26 Years of Excellence
+            </div>
         </div>
-        <p style="margin-bottom: 10px;">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
-        <p style="font-size: 1.5rem; color: var(--sinopia-red); font-family: var(--font-serif);">See u later!</p>
-        <button class="btn-editorial" onclick="closeModal()">Close</button>
+
+        <div class="intro-text">
+            <h2>A Portrait at 26</h2>
+            <div class="intro-name">Zain.</div>
+            <p style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px; font-size: 0.92rem; color: var(--prussian-blue);">
+                Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
+            </p>
+
+            <div style="margin-top: 30px;">
+                <div class="stat-label">
+                    <span>Intellectual Depth</span>
+                    <span style="color: var(--sinopia-red);">98%</span>
+                </div>
+                <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
+
+                <div class="stat-label">
+                    <span>Leadership & Guidance</span>
+                    <span>⭐⭐⭐⭐⭐</span>
+                </div>
+                <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+
+                <div style="margin-bottom: 30px;">
+                    <div class="stat-label">
+                        <span>Ambition Drive</span>
+                        <span style="color: var(--sinopia-red);">MAX</span>
+                    </div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 100%; background: var(--sinopia-red);"></div></div>
+                </div>
+
+                <div style="margin-bottom: 28px;">
+                    <span class="trait-badge">Optimistic</span>
+                    <span class="trait-badge">Stubborn</span>
+                    <span class="trait-badge">Dream Chaser</span>
+                    <span class="trait-badge" style="border-color: var(--sinopia-red); color: var(--sinopia-red);">Spoiled (Home Edition)</span>
+                </div>
+
+                <div class="achievement-box">
+                    <p class="ach-label">Achievement Unlocked</p>
+                    <h3>BUSINESS OWNER ✨</h3>
+                    <p>From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.</p>
+                </div>
+            </div>
+
+            <button class="btn-editorial" style="margin-top: 40px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
+        </div>
     </div>
 
-    <script>
-        let currentMsgPage = 1;
-        const totalPages = 2;
+    <div class="chapters" id="chapters">
+        <div class="section-header">
+            <p>Curated Collections</p>
+            <h2>Explore Moments</h2>
+        </div>
 
-        function showGateway() {
-            document.getElementById('landing').style.display = 'none';
-            document.getElementById('gateway').style.display = 'flex';
-        }
+        <div class="menu-grid">
+            <div class="menu-item" onclick="window.open('https://music.youtube.com/playlist?list=PLfrx2LKIvMTnoLAC_mQ5uQJEf6tRbDDTH&si=4z7Ed4Tl05pcUvlx', '_blank')">
+                <h3>Playlist</h3>
+                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The sound that reminds me of u</p>
+            </div>
+            <div class="menu-item" onclick="openMoments()">
+                <h3>Moments</h3>
+                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">A Visual Timeline</p>
+            </div>
+            <div class="menu-item" onclick="showModal('message')">
+                <h3>Message</h3>
+                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">Words From Me</p>
+            </div>
+            <div class="menu-item" onclick="showModal('gift')">
+                <h3>Gift</h3>
+                <p style="font-size: 0.7rem; letter-spacing: 0.1rem; color: var(--silver); text-transform: uppercase; font-family: var(--font-heading); font-weight: 600;">The Final Piece</p>
+            </div>
+        </div>
+    </div>
 
-        function checkPass() {
-            const pass = document.getElementById('passInput').value;
-            if (pass === '160426') {
-                confetti({
-                    particleCount: 150,
-                    spread: 70,
-                    origin: { y: 0.6 },
-                    colors: ['#CC361E', '#224766', '#ffffff', '#2d4a22']
-                });
-                document.getElementById('gateway').style.display = 'none';
-                document.getElementById('main-page').style.display = 'block';
-                const music = document.getElementById('bgMusic');
-                music.play().catch(e => console.log("Audio play blocked by browser"));
+</section>
+
+<!-- =================== OVERLAY & MODALS =================== -->
+<div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+<div class="modal" id="modal-message">
+    <h3>A Message for You</h3>
+    <div class="book-container">
+        <div class="book-page active" id="page-1">
+            <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8;">
+                "Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"
+            </p>
+        </div>
+        <div class="book-page" id="page-2">
+            <p style="margin: 20px 0; font-size: 0.95rem; line-height: 1.8; text-align: left;">
+                HI HELLO, how r u??????<br><br>
+                how does it feels like to live at your early 26?<br><br>
+                someone said, the human brain has completed development at the age of 25. Now u complete all that phases but how can u still be childish?!?!?
+            </p>
+        </div>
+    </div>
+    <div class="page-nav">
+        <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility: hidden;">&larr; Back</span>
+        <span style="font-size: 0.7rem; color: var(--silver); font-family: var(--font-heading);" id="pageIndicator">1 / 2</span>
+        <span class="nav-link" id="nextBtn" onclick="changePage(1)">Next &rarr;</span>
+    </div>
+    <button class="btn-editorial" onclick="closeModal()">Close</button>
+</div>
+
+<div class="modal" id="modal-gift">
+    <h3>Your Gift</h3>
+    <div class="puzzle-box">
+        <p style="color: #999; font-style: italic;">[ Missing Piece ]</p>
+    </div>
+    <p style="margin-bottom: 10px;">Uh oh, it seems one crucial piece is missing... and it happens to be with me.</p>
+    <p style="font-size: 1.5rem; color: var(--sinopia-red); font-family: var(--font-serif);">See u later!</p>
+    <button class="btn-editorial" onclick="closeModal()">Close</button>
+</div>
+
+<!-- =================== MOMENTS FULLSCREEN =================== -->
+<div class="modal-moments" id="modal-moments">
+    <div class="moments-bg"></div>
+
+    <!-- Floating handwritten birthday words -->
+    <div class="floating-words" id="floatingWords"></div>
+
+    <span class="moments-close" onclick="closeMoments()">← Back</span>
+    <div class="photo-counter" id="photoCounter">1 / 5</div>
+
+    <div class="polaroid-stage">
+        <div class="polaroid-wrapper" id="polaroidWrapper">
+            <!-- Cards generated by JS -->
+        </div>
+    </div>
+
+    <div class="swipe-hint">tap or swipe to see next →</div>
+</div>
+
+<script>
+    // ============================================================
+    // FOTO-FOTO KAMU — edit bagian ini aja!
+    // Ganti src dengan path foto kamu, caption bebas diedit
+    // Kalau mau tambah foto, tinggal tambah object baru di array
+    // ============================================================
+    const photos = [
+        { src: '',  caption: 'add your photo here ✨' },
+        { src: '',  caption: 'another memory 🌙' },
+        { src: '',  caption: 'good times 🎉' },
+        { src: '',  caption: 'always 💙' },
+        { src: '',  caption: 'the legend 👑' },
+    ];
+    // ============================================================
+
+    const floatingTexts = [
+        'happy birthday!', 'make a wish ✨', 'you deserve the world',
+        'cheers to 26 🥂', 'keep shining', 'dream big always',
+        'you\'re amazing', 'happy bday zain!', 'so proud of you',
+        'level 26 unlocked', 'blessed soul', 'another year wiser',
+        'here\'s to you', 'celebrate good times', 'stay golden ✨',
+        'love & light', 'congrats!', 'you made it!',
+        'the odyssey continues', 'what a journey', 'birthday boy 🎂',
+    ];
+
+    let currentCard = 0;
+    let totalCards = photos.length;
+
+    // Build floating words
+    function buildFloatingWords() {
+        const container = document.getElementById('floatingWords');
+        container.innerHTML = '';
+        const sizes = [1, 1.2, 1.5, 1.8, 2.2, 2.8, 3.5];
+        const angles = [-25, -15, -8, 0, 8, 15, 25];
+        floatingTexts.forEach((text, i) => {
+            const el = document.createElement('span');
+            el.className = 'fw';
+            el.textContent = text;
+            const size = sizes[i % sizes.length];
+            const angle = angles[i % angles.length];
+            el.style.fontSize = size + 'rem';
+            el.style.transform = `rotate(${angle}deg)`;
+            el.style.top = (5 + (i * 13.7) % 88) + '%';
+            el.style.left = ((i * 17.3) % 90) + '%';
+            container.appendChild(el);
+        });
+    }
+
+    // Build polaroid cards
+    function buildPolaroids() {
+        const wrapper = document.getElementById('polaroidWrapper');
+        wrapper.innerHTML = '';
+        totalCards = photos.length;
+
+        photos.forEach((photo, i) => {
+            const card = document.createElement('div');
+            card.className = 'polaroid-card';
+            card.dataset.index = i;
+
+            const photoDiv = document.createElement('div');
+            photoDiv.className = 'polaroid-photo';
+
+            if (photo.src) {
+                const img = document.createElement('img');
+                img.src = photo.src;
+                img.alt = photo.caption;
+                photoDiv.appendChild(img);
             } else {
-                alert('Wrong code!');
-                document.getElementById('hintText').style.display = 'block';
+                const ph = document.createElement('div');
+                ph.className = 'polaroid-photo-placeholder';
+                ph.textContent = 'Add your photo here';
+                photoDiv.appendChild(ph);
             }
-        }
 
-        function changePage(step) {
-            document.getElementById(`page-${currentMsgPage}`).classList.remove('active');
-            currentMsgPage += step;
-            document.getElementById(`page-${currentMsgPage}`).classList.add('active');
-            document.getElementById('pageIndicator').innerText = `${currentMsgPage} / ${totalPages}`;
-            document.getElementById('prevBtn').style.visibility = currentMsgPage === 1 ? 'hidden' : 'visible';
-            document.getElementById('nextBtn').style.visibility = currentMsgPage === totalPages ? 'hidden' : 'visible';
-        }
+            const caption = document.createElement('div');
+            caption.className = 'polaroid-caption';
+            caption.textContent = photo.caption;
 
-        function showModal(type) {
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('modal-' + type).style.display = 'block';
-            if(type === 'message') {
-                currentMsgPage = 1;
-                document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
-                document.getElementById('page-1').classList.add('active');
-                document.getElementById('pageIndicator').innerText = `1 / ${totalPages}`;
-                document.getElementById('prevBtn').style.visibility = 'hidden';
-                document.getElementById('nextBtn').style.visibility = 'visible';
-            }
-        }
+            card.appendChild(photoDiv);
+            card.appendChild(caption);
+            card.addEventListener('click', nextCard);
+            wrapper.appendChild(card);
+        });
 
-        function closeModal() {
-            document.getElementById('overlay').style.display = 'none';
-            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        updateCardClasses();
+        updateCounter();
+    }
+
+    function updateCardClasses() {
+        const cards = document.querySelectorAll('.polaroid-card');
+        cards.forEach((card, i) => {
+            card.classList.remove('active', 'below-1', 'below-2', 'hidden');
+            const diff = i - currentCard;
+            if (diff === 0) card.classList.add('active');
+            else if (diff === 1) card.classList.add('below-1');
+            else if (diff === 2) card.classList.add('below-2');
+            else card.classList.add('hidden');
+        });
+    }
+
+    function updateCounter() {
+        document.getElementById('photoCounter').textContent = `${currentCard + 1} / ${totalCards}`;
+    }
+
+    function nextCard() {
+        if (currentCard >= totalCards - 1) return;
+        const cards = document.querySelectorAll('.polaroid-card');
+        const active = cards[currentCard];
+        active.classList.add('swiping-out');
+        setTimeout(() => {
+            active.classList.remove('active', 'swiping-out');
+            active.classList.add('hidden');
+            currentCard++;
+            updateCardClasses();
+            updateCounter();
+        }, 420);
+    }
+
+    function openMoments() {
+        buildFloatingWords();
+        buildPolaroids();
+        currentCard = 0;
+        updateCardClasses();
+        updateCounter();
+        document.getElementById('modal-moments').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMoments() {
+        document.getElementById('modal-moments').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // Touch/swipe support for polaroid
+    let touchStartX = 0;
+    document.getElementById('polaroidWrapper')?.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+    });
+    document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+    document.addEventListener('touchend', e => {
+        if (!document.getElementById('modal-moments').style.display || document.getElementById('modal-moments').style.display === 'none') return;
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (diff > 40) nextCard();
+    }, {passive: true});
+
+    // ============================================================
+    // EXISTING FUNCTIONS
+    // ============================================================
+    let currentMsgPage = 1;
+    const totalPages = 2;
+
+    function showGateway() {
+        document.getElementById('landing').style.display = 'none';
+        document.getElementById('gateway').style.display = 'flex';
+    }
+
+    function checkPass() {
+        const pass = document.getElementById('passInput').value;
+        if (pass === '160426') {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#CC361E', '#224766', '#ffffff', '#2d4a22']
+            });
+            document.getElementById('gateway').style.display = 'none';
+            document.getElementById('main-page').style.display = 'block';
+            const music = document.getElementById('bgMusic');
+            music.play().catch(e => console.log("Audio play blocked by browser"));
+        } else {
+            alert('Wrong code!');
+            document.getElementById('hintText').style.display = 'block';
         }
-    </script>
+    }
+
+    function changePage(step) {
+        document.getElementById(`page-${currentMsgPage}`).classList.remove('active');
+        currentMsgPage += step;
+        document.getElementById(`page-${currentMsgPage}`).classList.add('active');
+        document.getElementById('pageIndicator').innerText = `${currentMsgPage} / ${totalPages}`;
+        document.getElementById('prevBtn').style.visibility = currentMsgPage === 1 ? 'hidden' : 'visible';
+        document.getElementById('nextBtn').style.visibility = currentMsgPage === totalPages ? 'hidden' : 'visible';
+    }
+
+    function showModal(type) {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('modal-' + type).style.display = 'block';
+        if (type === 'message') {
+            currentMsgPage = 1;
+            document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-1').classList.add('active');
+            document.getElementById('pageIndicator').innerText = `1 / ${totalPages}`;
+            document.getElementById('prevBtn').style.visibility = 'hidden';
+            document.getElementById('nextBtn').style.visibility = 'visible';
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('overlay').style.display = 'none';
+        document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+    }
+</script>
 </body>
 </html>
