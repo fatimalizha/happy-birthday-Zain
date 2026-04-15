@@ -66,6 +66,7 @@
         /* =================== LANDING =================== */
         #landing {
             min-height: 100vh;
+            height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -128,6 +129,7 @@
         #gateway {
             display: none;
             min-height: 100vh;
+            height: 100svh;
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -136,6 +138,26 @@
             padding: 20px;
             position: relative;
             overflow: hidden;
+        }
+        #gateway::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -80px;
+            width: clamp(200px, 35vw, 340px);
+            height: clamp(200px, 35vw, 340px);
+            border: 2px solid rgba(204,54,30,0.12);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        #gateway::after {
+            content: '';
+            position: absolute;
+            bottom: -80px; left: -60px;
+            width: clamp(160px, 28vw, 260px);
+            height: clamp(160px, 28vw, 260px);
+            background: rgba(204,54,30,0.05);
+            border-radius: 50%;
+            pointer-events: none;
         }
         .gateway-inner {
             position: relative;
@@ -147,6 +169,31 @@
             padding: 20px;
             width: 100%;
             max-width: 500px;
+        }
+        .gateway-eyebrow {
+            font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+            letter-spacing: 0.4rem;
+            text-transform: uppercase;
+            color: var(--sinopia-red);
+            font-weight: 700;
+            font-family: var(--font-heading);
+            margin-bottom: 12px;
+        }
+        #gateway h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 8vw, 5rem);
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+            color: var(--anti-flash-white);
+            line-height: 1;
+        }
+        .gateway-sub {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--silver);
+            font-size: clamp(0.72rem, 2vw, 0.82rem);
+            letter-spacing: 0.1rem;
+            margin-bottom: 40px;
         }
         .pass-input {
             background: transparent;
@@ -163,12 +210,16 @@
             letter-spacing: 0.3em;
         }
         .gateway-btn { border-color: rgba(239,239,239,0.4); color: var(--anti-flash-white); }
+        .gateway-btn:hover { background: var(--anti-flash-white); color: var(--prussian-blue); border-color: var(--anti-flash-white); }
+        .hint { color: var(--silver); margin-top: 15px; font-size: 0.75rem; font-family: var(--font-body); }
 
         /* =================== MAIN PAGE =================== */
         #main-page { display: none; }
 
+        /* HERO */
         .hero-birthday {
             min-height: 100vh;
+            height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -180,45 +231,147 @@
             color: white;
             padding: 20px;
             position: relative;
+            overflow: hidden;
+        }
+        .hero-birthday::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom, transparent, rgba(239,239,239,0.12));
+            pointer-events: none;
+        }
+        .hero-birthday p {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            letter-spacing: 0.35rem;
+            text-transform: uppercase;
+            font-size: clamp(0.65rem, 2vw, 0.82rem);
+            opacity: 0.75;
+            margin-bottom: 8px;
         }
         .hero-birthday h1 {
             font-family: var(--font-display);
             font-size: clamp(4rem, 18vw, 14rem);
+            letter-spacing: 0.04em;
             line-height: 0.88;
+            text-transform: uppercase;
+            font-weight: 400;
             margin-bottom: 28px;
+            color: var(--anti-flash-white);
         }
 
-        /* =================== INTRODUCTION (RESPONSIVE) =================== */
+        /* =================== INTRODUCTION =================== */
         .introduction {
-            padding: clamp(50px, 8vh, 100px) 6%;
+            padding: clamp(50px, 8vh, 100px) clamp(5%, 8%, 10%);
             background-color: var(--prussian-blue);
             position: relative;
             overflow: hidden;
+        }
+        .introduction::before {
+            content: 'ZAIN';
+            position: absolute;
+            font-family: var(--font-display);
+            font-size: clamp(15vw, 22vw, 28vw);
+            color: rgba(255,255,255,0.03);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            white-space: nowrap;
         }
         .intro-grid {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
             gap: clamp(24px, 5vw, 60px);
             align-items: start;
-            max-width: 1200px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         .intro-image {
+            position: relative;
             background-image: url('zain profile.jpeg');
             background-size: cover;
             background-position: center;
             height: clamp(300px, 60vh, 75vh);
             border-radius: 4px;
-            position: relative;
+            overflow: hidden;
+        }
+        .intro-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(18,36,53,0.6) 0%, transparent 50%);
+        }
+        .intro-img-badge {
+            position: absolute;
+            bottom: 16px; left: 16px;
+            background: var(--sinopia-red);
+            color: white;
+            padding: 8px 14px;
+            font-size: clamp(0.5rem, 1.2vw, 0.6rem);
+            letter-spacing: 0.15rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            border-radius: 4px;
+            z-index: 2;
+        }
+        .intro-text-col { color: var(--anti-flash-white); }
+        .intro-eyebrow {
+            font-family: var(--font-body);
+            font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+            letter-spacing: 0.4rem;
+            color: var(--sinopia-red);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .intro-name {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: var(--anti-flash-white);
+            line-height: 0.85;
+            letter-spacing: 0.04em;
+            margin-bottom: 16px;
+        }
+        .intro-desc {
+            font-style: italic;
+            border-left: 2px solid var(--sinopia-red);
+            padding-left: 16px;
+            font-size: clamp(0.78rem, 2vw, 0.9rem);
+            color: rgba(239,239,239,0.7);
+            margin-bottom: 28px;
+            line-height: 1.7;
         }
 
         /* Stat bars */
-        .stat-bar-bg {
-            width: 100%; height: 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px; margin-bottom: 20px; overflow: hidden;
+        .stat-block { margin-bottom: 20px; }
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: clamp(0.6rem, 1.5vw, 0.68rem);
+            text-transform: uppercase;
+            letter-spacing: 0.08rem;
+            margin-bottom: 7px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: rgba(239,239,239,0.8);
         }
-        .stat-bar-fill { height: 100%; background: var(--anti-flash-white); border-radius: 10px; }
+        .stat-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            background: var(--anti-flash-white);
+            position: absolute;
+            left: 0; top: 0;
+            border-radius: 10px;
+        }
         .stat-bar-fill.red { background: var(--sinopia-red); }
 
         /* Trait badges */
@@ -228,89 +381,278 @@
             padding: 8px 16px;
             font-size: clamp(0.55rem, 1.4vw, 0.62rem);
             text-transform: uppercase;
+            letter-spacing: 0.1rem;
             border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 600;
             color: var(--anti-flash-white);
             cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
         }
-        .trait-badge.active-trait { background: var(--sinopia-red); border-color: var(--sinopia-red); }
+        .trait-badge:hover, .trait-badge.active-trait {
+            background: var(--sinopia-red);
+            border-color: var(--sinopia-red);
+            color: white;
+            transform: translateY(-2px);
+            z-index: 50;
+        }
         .trait-tooltip {
-            display: none; position: absolute; bottom: calc(100% + 10px); left: 50%;
-            transform: translateX(-50%); background: #0d1e2e; padding: 12px;
-            border-radius: 8px; width: 220px; z-index: 200; font-size: 0.75rem;
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0d1e2e;
+            border: 1px solid rgba(204,54,30,0.4);
+            color: rgba(239,239,239,0.9);
+            font-family: var(--font-body);
+            font-weight: 300;
+            font-size: clamp(0.65rem, 1.8vw, 0.72rem);
+            text-transform: none;
+            letter-spacing: 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            width: clamp(180px, 45vw, 220px);
+            line-height: 1.6;
+            z-index: 200;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            pointer-events: none;
+            white-space: normal;
+        }
+        .trait-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%; left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(204,54,30,0.4);
         }
         .trait-badge.active-trait .trait-tooltip { display: block; }
 
         /* Achievement carousel */
-        .ach-track-outer { overflow: hidden; position: relative; }
-        .ach-track { display: flex; gap: 14px; transition: transform 0.4s ease; }
-        .ach-card {
-            min-width: clamp(220px, 60vw, 250px);
-            background: rgba(255,255,255,0.05);
-            border-left: 4px solid var(--indigo-dye);
-            padding: 16px; border-radius: 0 10px 10px 0;
+        .achievement-section { margin-top: 10px; }
+        .achievement-section .ach-label {
+            font-size: clamp(0.52rem, 1.4vw, 0.58rem);
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            color: var(--sinopia-red);
+            font-weight: 700;
+            font-family: var(--font-heading);
+            margin-bottom: 12px;
         }
+        .ach-track-outer { overflow: hidden; position: relative; }
+        .ach-track {
+            display: flex;
+            gap: 14px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .ach-card {
+            min-width: clamp(180px, 45vw, 220px);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-left: 4px solid var(--indigo-dye);
+            border-radius: 0 10px 10px 0;
+            padding: 16px 14px;
+            flex-shrink: 0;
+            transition: border-left-color 0.3s;
+        }
+        .ach-card:hover { border-left-color: var(--sinopia-red); }
+        .ach-card h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--anti-flash-white);
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+        .ach-card p { font-size: clamp(0.68rem, 1.8vw, 0.75rem); color: rgba(239,239,239,0.5); font-weight: 300; line-height: 1.5; }
+        .ach-card .ach-emoji { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+        .ach-nav { display: flex; gap: 8px; margin-top: 14px; }
+        .ach-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .ach-dot.active { background: var(--sinopia-red); width: 20px; border-radius: 3px; }
 
-        /* CHAPTERS GRID */
-        .chapters { padding: 80px 6%; background-color: var(--anti-flash-white); }
+        /* CHAPTERS */
+        .chapters { padding: clamp(50px, 8vh, 90px) clamp(5%, 8%, 10%); background-color: var(--anti-flash-white); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header p {
+            font-size: clamp(0.6rem, 1.5vw, 0.68rem);
+            letter-spacing: 0.25rem;
+            color: var(--silver); text-transform: uppercase;
+            font-family: var(--font-heading); font-weight: 600; margin-bottom: 8px;
+        }
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 6vw, 3.8rem);
+            color: var(--prussian-blue); letter-spacing: 0.04em;
+        }
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px; max-width: 1000px; margin: 0 auto;
+            gap: clamp(12px, 2vw, 20px);
+            max-width: 1000px; margin: 0 auto;
         }
         .menu-item {
-            background-color: white; padding: 30px 15px; border-radius: 16px;
-            text-align: center; cursor: pointer; border: 1.5px solid rgba(18,36,53,0.06);
+            background-color: white;
+            min-height: clamp(130px, 18vh, 180px);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center; cursor: pointer;
+            transition: all 0.35s ease; padding: clamp(18px, 3vw, 28px) clamp(12px, 2vw, 20px);
+            text-align: center;
+            border-radius: 16px; border: 1.5px solid rgba(18,36,53,0.06);
+            position: relative; overflow: hidden;
         }
+        .menu-item::before {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 3px; background: var(--sinopia-red);
+            transition: width 0.35s ease; border-radius: 0 0 0 16px;
+        }
+        .menu-item:hover::before { width: 100%; }
+        .menu-item:hover { background-color: var(--prussian-blue); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(18,36,53,0.15); }
+        .menu-item:hover h3 { color: var(--anti-flash-white); }
+        .menu-item:hover p { color: var(--silver) !important; }
+        .menu-item h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            letter-spacing: 0.06em; color: var(--prussian-blue);
+            transition: color 0.35s ease; margin-bottom: 6px;
+        }
+        .menu-item p { transition: color 0.35s ease; font-size: clamp(0.6rem, 1.5vw, 0.7rem); }
 
-        /* MODALS */
+        /* =================== MODALS =================== */
         .modal {
-            display: none; position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); width: 90%; max-width: 450px;
-            background: white; padding: 35px 25px; z-index: 1000;
-            border-left: 6px solid var(--sinopia-red); border-radius: 0 18px 18px 0;
+            display: none; position: fixed;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: min(90vw, 450px);
+            background: white;
+            padding: clamp(24px, 5vw, 44px) clamp(20px, 4vw, 34px);
+            z-index: 1000; text-align: center;
+            border-left: 6px solid var(--sinopia-red);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+            border-radius: 0 18px 18px 0;
+            max-height: 88vh; overflow-y: auto;
         }
+        .modal h3 {
+            font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2rem);
+            letter-spacing: 0.06em; color: var(--prussian-blue); margin-bottom: 4px;
+        }
+        .book-container { position: relative; min-height: 180px; display: flex; flex-direction: column; justify-content: center; }
+        .book-page { display: none; animation: fadeIn 0.5s ease; }
+        .book-page.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .page-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .nav-link { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12rem; color: var(--sinopia-red); cursor: pointer; font-weight: 700; font-family: var(--font-heading); }
+
         .overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 36, 53, 0.95); z-index: 999; backdrop-filter: blur(4px);
+            background: rgba(18, 36, 53, 0.92); z-index: 999; backdrop-filter: blur(4px);
         }
 
-        /* MOMENTS FULLSCREEN */
+        /* Gift puzzle box */
+        .puzzle-box {
+            width: clamp(120px, 30vw, 160px);
+            height: clamp(120px, 30vw, 160px);
+            margin: 20px auto;
+            position: relative;
+            cursor: default;
+        }
+        .puzzle-svg { width: 100%; height: 100%; }
+
+        /* =================== MOMENTS FULLSCREEN =================== */
         .modal-moments {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1000; background: #1a1a2e; overflow: hidden;
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1000; overflow: hidden;
         }
-        .polaroid-wrapper { position: relative; width: 280px; height: 340px; margin: 0 auto; }
+        .moments-bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+        }
+        .moments-bg::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(204,54,30,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(34,71,102,0.15) 0%, transparent 50%);
+        }
+        .floating-words { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .fw { position: absolute; font-family: var(--font-handwritten); color: rgba(255,255,255,0.07); user-select: none; white-space: nowrap; }
+        .polaroid-stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        .polaroid-wrapper {
+            position: relative;
+            width: clamp(220px, 55vw, 280px);
+            height: clamp(270px, 65vw, 340px);
+        }
         .polaroid-card {
-            position: absolute; inset: 0; background: white; padding: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 4px;
+            position: absolute; inset: 0; background: white; border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+            cursor: pointer; user-select: none;
         }
-        .swiping-out { transform: translateX(150%) rotate(20deg); opacity: 0; transition: 0.5s; }
+        .polaroid-card.active { z-index: 10; transform: rotate(0deg) translateY(0px); opacity: 1; }
+        .polaroid-card.below-1 { z-index: 9; transform: rotate(2.5deg) translateY(8px) scale(0.97); opacity: 0.9; }
+        .polaroid-card.below-2 { z-index: 8; transform: rotate(-2deg) translateY(14px) scale(0.94); opacity: 0.75; }
+        .polaroid-card.below-3 { z-index: 7; transform: rotate(1.5deg) translateY(18px) scale(0.91); opacity: 0.55; }
+        .polaroid-card.hidden { z-index: 6; transform: rotate(1deg) translateY(22px) scale(0.88); opacity: 0; pointer-events: none; }
+        .polaroid-card.swiping-out { transform: translateX(120%) rotate(15deg) !important; opacity: 0 !important; transition: transform 0.45s ease, opacity 0.3s ease !important; }
+        .polaroid-photo { flex: 1; margin: 12px 12px 8px 12px; background: var(--anti-flash-white); overflow: hidden; border-radius: 2px; }
+        .polaroid-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .polaroid-photo-placeholder {
+            width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #e8e8e8, #d0d0d0); color: #999;
+            font-size: 0.7rem; font-family: var(--font-heading); letter-spacing: 0.1rem;
+            text-transform: uppercase; text-align: center; padding: 10px;
+        }
+        .polaroid-caption { padding: 6px 14px 14px; font-family: var(--font-handwritten); font-size: clamp(0.85rem, 2.5vw, 1rem); color: #333; text-align: center; line-height: 1.3; }
+        .swipe-hint { position: absolute; bottom: clamp(16px, 4vh, 30px); left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.45); font-family: var(--font-heading); font-size: clamp(0.55rem, 1.5vw, 0.65rem); letter-spacing: 0.2rem; text-transform: uppercase; }
+        .photo-counter { position: absolute; top: 20px; right: 20px; color: rgba(255,255,255,0.5); font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 0.15rem; }
+        .moments-close { position: absolute; top: 18px; left: 20px; color: rgba(255,255,255,0.6); font-family: var(--font-heading); font-size: clamp(0.6rem, 1.8vw, 0.65rem); letter-spacing: 0.2rem; text-transform: uppercase; cursor: pointer; transition: color 0.2s; z-index: 20; }
+        .moments-close:hover { color: white; }
 
-        /* =================== MOBILE FIXES =================== */
+        /* =================== RESPONSIVE =================== */
         @media (max-width: 768px) {
-            .intro-grid { grid-template-columns: 1fr; }
-            .intro-image { height: 350px; order: -1; }
+            .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+            .intro-image { height: clamp(260px, 45vw, 360px); order: -1; }
             .menu-grid { grid-template-columns: 1fr; }
-            .hero-birthday h1 { font-size: 5.5rem; }
-            .landing-content h2 { font-size: 3.5rem; }
+            .introduction { padding: 50px 6%; }
+            .trait-tooltip { width: clamp(160px, 70vw, 220px); left: 0; transform: none; }
+            .trait-tooltip::after { left: 20px; transform: none; }
+        }
+        @media (max-width: 480px) {
+            .menu-grid { grid-template-columns: repeat(2, 1fr); }
+            .btn-editorial { padding: 11px 22px; font-size: 0.65rem; }
         }
     </style>
 </head>
 <body>
 
-<audio id="bgMusic"><source src="hbd1.mp3" type="audio/mpeg"></audio>
-<audio id="msgMusic" loop><source src="a_thousand_years.mp3" type="audio/mpeg"></audio>
+<!-- Music: A Thousand Years instrumental -->
+<audio id="bgMusic">
+    <source src="hbd1.mp3" type="audio/mpeg">
+</audio>
+<audio id="msgMusic" loop>
+    <!-- A Thousand Years piano instrumental / slow flowing instrumental -->
+    <source src="a_thousand_years.mp3" type="audio/mpeg">
+</audio>
 
+<!-- =================== LANDING =================== -->
 <section id="landing">
     <div class="landing-content">
         <p class="landing-eyebrow">A little something for you</p>
         <h2>The Odyssey of <span>Zain</span></h2>
-        <h2 style="font-size: 1.8rem; color: var(--silver); margin-top: -4px;">at Twenty Six</h2>
+        <h2 style="font-size: clamp(1.4rem, 5vw, 3rem); color: var(--silver); margin-top: -4px;">at Twenty Six</h2>
         <button class="btn-editorial" onclick="showGateway()">Start Journey</button>
     </div>
 </section>
 
+<!-- =================== GATEWAY =================== -->
 <section id="gateway">
     <div class="gateway-inner">
         <p class="gateway-eyebrow">Private Access</p>
@@ -318,145 +660,442 @@
         <p class="gateway-sub">only the chosen one may enter, and i choose YOU! :p</p>
         <input type="password" id="passInput" class="pass-input" placeholder="······" maxlength="6">
         <button class="btn-editorial gateway-btn" onclick="checkPass()">Unlock</button>
-        <p id="hintText" class="hint" style="display:none; color: var(--silver); margin-top:10px;">Hint: well u are old now whopss</p>
+        <p id="hintText" class="hint" style="display:none;">Hint: well u are old now whopss</p>
     </div>
 </section>
 
+<!-- =================== MAIN PAGE =================== -->
 <section id="main-page">
+
     <div class="hero-birthday">
-        <p style="letter-spacing: 0.35rem; text-transform: uppercase;">Happy 26th Birthday</p>
+        <p>Happy 26th Birthday</p>
         <h1>ZAIN.</h1>
-        <button class="btn-editorial" style="border-color: white; color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
+        <button class="btn-editorial" style="border-color: rgba(255,255,255,0.5); color: white;" onclick="document.getElementById('intro-anchor').scrollIntoView({behavior: 'smooth'})">the upgrade</button>
     </div>
 
     <div class="introduction" id="intro-anchor">
         <div class="intro-grid">
+
             <div class="intro-image">
-                <div style="position: absolute; bottom: 15px; left: 15px; background: var(--sinopia-red); color: white; padding: 8px 12px; font-size: 0.6rem; letter-spacing: 0.1rem; text-transform: uppercase; font-weight: 700; border-radius: 4px;">26 Years of Excellence</div>
+                <div class="intro-img-badge">26 Years of Excellence</div>
             </div>
-            
+
             <div class="intro-text-col">
-                <p style="color: var(--sinopia-red); font-weight: 700; letter-spacing: 0.3rem; font-size: 0.7rem; margin-bottom: 10px;">A PORTRAIT AT 26</p>
-                <h1 style="font-family: var(--font-display); font-size: 5rem; color: white; line-height: 0.9;">Zain.</h1>
-                <p style="font-style: italic; border-left: 2px solid var(--sinopia-red); padding-left: 15px; margin: 20px 0; color: rgba(255,255,255,0.7);">
+                <p class="intro-eyebrow">A Portrait at 26</p>
+                <div class="intro-name">Zain.</div>
+                <p class="intro-desc">
                     Zain. Beautiful heart beautiful name beautiful appearance. Well, the name truly represents who this guy is. here's the overal review:
                 </p>
 
                 <div class="stat-block">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: white; margin-bottom: 5px;"><span>Intellectual Depth</span><span style="color: var(--sinopia-red);">98%</span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 98%;"></div></div>
+                    <div class="stat-label"><span>Intellectual Depth</span><span style="color:var(--sinopia-red)">98%</span></div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:98%"></div></div>
                 </div>
                 <div class="stat-block">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: white; margin-bottom: 5px;"><span>Leadership & Guidance</span><span style="color: var(--sinopia-red);">80%</span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width: 80%;"></div></div>
+                    <div class="stat-label"><span>Leadership & Guidance</span><span style="color:var(--sinopia-red)">80%</span></div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:80%"></div></div>
                 </div>
                 <div class="stat-block">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.65rem; color: white; margin-bottom: 5px;"><span>Ambition Drive</span><span style="color: var(--sinopia-red);">MAX</span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width: 100%;"></div></div>
+                    <div class="stat-label"><span>Ambition Drive</span><span style="color:var(--sinopia-red)">MAX</span></div>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill red" style="width:100%"></div></div>
                 </div>
 
                 <div class="traits-row">
-                    <div class="trait-badge" onclick="toggleTrait(this)">Optimistic<div class="trait-tooltip">this guy somehow still believes things will work out, and honestly? He's usually right.</div></div>
-                    <div class="trait-badge" onclick="toggleTrait(this)">Stubborn<div class="trait-tooltip">Once he's set his mind on something, there's literally no turning back.</div></div>
-                    <div class="trait-badge" onclick="toggleTrait(this)">Dream Chaser<div class="trait-tooltip">Building a business at 26? That's not luck, that's Zain. 🚀</div></div>
-                    <div class="trait-badge" onclick="toggleTrait(this)" style="color: var(--sinopia-red); border-color: var(--sinopia-red);">Spoiled (Home Edition)<div class="trait-tooltip">At home, he is THE main character. Full service expected. 😂👑</div></div>
+                    <div class="trait-badge" onclick="toggleTrait(this)">
+                        Optimistic
+                        <div class="trait-tooltip">idk why, this guy always shows up with every optimistic way possible. Even on the hardest days, this guy somehow still believes things will work out, and honestly? He's usually right. I wonder if this guy have a 6th senses or he can read thoughts and future.</div>
+                    </div>
+                    <div class="trait-badge" onclick="toggleTrait(this)">
+                        Stubborn
+                        <div class="trait-tooltip">Once he's set his mind on something, there's literally no turning back. A blessing and a curse, well but mostly a blessing. 💪 eventho someone says please don't do it. He still on his track like crazy. But yeh well i admit it, he can be responsible of what he'd chose</div>
+                    </div>
+                    <div class="trait-badge" onclick="toggleTrait(this)">
+                        Dream Chaser
+                        <div class="trait-tooltip">He doesn't just talk about his dreams, he actually goes after them. Building a business at 26? That's not luck, that's Zain. 🚀 IM SO PROUD OF THIS GUY MASHAALLAH</div>
+                    </div>
+                    <div class="trait-badge" onclick="toggleTrait(this)" style="border-color:rgba(204,54,30,0.4); color:rgba(204,54,30,0.9)">
+                        Spoiled (Home Edition)
+                        <div class="trait-tooltip">I never knew this before, BUT At home, he is THE main character. Full service expected, full comfort required. I wonder what else can he shows on his spoiled childish side. BUT WELL I love him anyway. 😂👑 please show me more of your unlocked side im dying to know bcs it's super cute</div>
+                    </div>
                 </div>
 
                 <div class="achievement-section">
-                    <p style="color: var(--sinopia-red); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1rem; margin-bottom: 10px;">ACHIEVEMENTS UNLOCKED</p>
+                    <p class="ach-label">Achievements Unlocked</p>
                     <div class="ach-track-outer">
                         <div class="ach-track" id="achTrack">
-                            <div class="ach-card"><h3>BUSINESS OWNER</h3><p>He truly achieved building his own empire. I'm super proud of him.</p></div>
-                            <div class="ach-card"><h3>UBER DRIVER</h3><p>Tried something completely new — hit the road, met strangers. That takes guts.</p></div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">✨</span>
+                                <h3>BUSINESS OWNER</h3>
+                                <p>From the visions of 25 to the reality of 26. He truly achieved building his own empire. I'm super proud of him.</p>
+                            </div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">🚗</span>
+                                <h3>UBER DRIVER ERA</h3>
+                                <p>Tried something completely new — hit the road, met strangers, lived different lives for a moment. That takes guts.</p>
+                            </div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">🌍</span>
+                                <h3>EXPERIENCE COLLECTOR</h3>
+                                <p>Never afraid to try new things. From new skills to new roles — Zain doesn't just live life, he explores it fully.</p>
+                            </div>
+                            <div class="ach-card">
+                                <span class="ach-emoji">🧠</span>
+                                <h3>FULLY DEVELOPED BRAIN</h3>
+                                <p>Officially 26 — the science says your brain is complete. Yet somehow you still manage to be chaotic. Iconic.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="ach-nav" id="achNav" style="display: flex; gap: 5px; margin-top: 10px;"></div>
+                    <div class="ach-nav" id="achNav"></div>
                 </div>
 
-                <button class="btn-editorial" style="border-color: rgba(255,255,255,0.3); color: white; margin-top: 30px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
+                <button class="btn-editorial" style="border-color:rgba(239,239,239,0.3); color:var(--anti-flash-white); margin-top: 40px;" onclick="document.getElementById('chapters').scrollIntoView({behavior: 'smooth'})">Explore His Chapters</button>
             </div>
         </div>
     </div>
 
     <div class="chapters" id="chapters">
-        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-            <p style="letter-spacing: 0.2rem; color: var(--silver); font-size: 0.7rem;">CURATED COLLECTIONS</p>
-            <h2 style="font-family: var(--font-display); font-size: 3rem;">Explore Moments</h2>
+        <div class="section-header">
+            <p>Curated Collections</p>
+            <h2>Explore Moments</h2>
         </div>
         <div class="menu-grid">
-            <div class="menu-item" onclick="window.open('https://music.youtube.com/playlist?list=PLfrx2LKIvMTnoLAC_mQ5uQJEf6tRbDDTH&si=4z7Ed4Tl05pcUvlx', '_blank')"><h3>Playlist</h3><p>The sound that reminds me of u</p></div>
-            <div class="menu-item" onclick="openMoments()"><h3>Moments</h3><p>A Visual Timeline</p></div>
-            <div class="menu-item" onclick="showModal('message')"><h3>Message</h3><p>Words From Me</p></div>
-            <div class="menu-item" onclick="showModal('gift')"><h3>Gift</h3><p>The Final Piece</p></div>
+            <div class="menu-item" onclick="window.open('https://music.youtube.com/playlist?list=PLfrx2LKIvMTnoLAC_mQ5uQJEf6tRbDDTH&si=4z7Ed4Tl05pcUvlx', '_blank')">
+                <h3>Playlist</h3>
+                <p style="letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">The sound that reminds me of u</p>
+            </div>
+            <div class="menu-item" onclick="openMoments()">
+                <h3>Moments</h3>
+                <p style="letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">A Visual Timeline</p>
+            </div>
+            <div class="menu-item" onclick="showModal('message')">
+                <h3>Message</h3>
+                <p style="letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">Words From Me</p>
+            </div>
+            <div class="menu-item" onclick="showModal('gift')">
+                <h3>Gift</h3>
+                <p style="letter-spacing:0.1rem;color:var(--silver);text-transform:uppercase;font-family:var(--font-heading);font-weight:600;">The Final Piece</p>
+            </div>
         </div>
     </div>
+
 </section>
 
+<!-- =================== OVERLAY & MODALS =================== -->
 <div class="overlay" id="overlay" onclick="closeModal()"></div>
 
+<!-- MESSAGE MODAL — 7 pages total -->
 <div class="modal" id="modal-message">
     <h3>A Message for You</h3>
     <div class="book-container">
-        <div class="book-page active" id="page-1"><p style="margin:20px 0;">"Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time."</p></div>
-        <div class="book-page" id="page-2"><p style="margin:20px 0; text-align: left;">HI HELLO, how r u??????<br><br>how does it feels like to live at your early 26?<br><br>the human brain has completed development at 25, how can u still be childish?!?</p></div>
-        <div class="book-page" id="page-3"><p style="margin:20px 0; text-align: left;">after our wonderful amazing greatest time when u were in india, u make me believe u are the worth kind of person. duh u such an explorer soul. 🌿</p></div>
-        <div class="book-page" id="page-4"><p style="margin:20px 0; text-align: left;">i hope you can make your parents proud of u the way u always dream about. i believe everything that u do now is gonna be the best outcome. 🤍</p></div>
-        <div class="book-page" id="page-5"><p style="margin:20px 0; text-align: left;">u are so annoying person wallahi, but u also understand how to make people around u still belive on you. its very uncommon personality. 💙</p></div>
-        <div class="book-page" id="page-6"><p style="margin:20px 0; text-align: left;">at 26, i hope you give yourself permission to rest too. not just chase, not just grind but also breathe. let yourself feel proud of that. 🌙</p></div>
-        <div class="book-page" id="page-7"><p style="margin:20px 0; font-style: italic;">happy birthday, MY ZAIN ONE AND ONLY ZAIN. 🎂✨<br><br>TE AMO, SARANGHAE, LOVE YAAAAA ❤️❤️</p></div>
+
+        <div class="book-page active" id="page-1">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;">
+                "Happy birthday, Zain! Thank you for being such a fun, warm, and reliable friend all this time. Cheers to many more great years ahead!"
+            </p>
+        </div>
+
+        <div class="book-page" id="page-2">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;text-align:left;">
+                HI HELLO, how r u??????<br><br>
+                how does it feels like to live at your early 26?<br><br>
+                someone said, the human brain has completed development at the age of 25. Now u complete all that phases but how can u still be childish?!?!?
+            </p>
+        </div>
+
+        <div class="book-page" id="page-3">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;text-align:left;">
+                after our wonderful amazing greatest time when u were in india, u make me believe u are the worth kind of person. u shows how busy u are but also shows me how it can be beneficial for u. duh u such an explorer soul. i appreciate it so much but please be careful 🌿
+            </p>
+        </div>
+
+        <div class="book-page" id="page-4">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;text-align:left;">
+                Zain, i know u are very purest soul u are very kind person. i hope everything going well for u now and in the future. i hope you can make your parents proud of u the way u always dream about. i believe everything that u do now is gonna be the best outcome for u and everyone around you. 🤍
+            </p>
+        </div>
+
+        <div class="book-page" id="page-5">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;text-align:left;">
+                you know what's funny? u are so annoying person wallahi, but u also understand how to make people around u still belive on you, still love you, and make them feel happy around u. its very uncommon personality i ever found, you know? i could say rarest type of person, and that's you. 💙
+            </p>
+        </div>
+
+        <div class="book-page" id="page-6">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;text-align:left;">
+                at 26, i hope you give yourself permission to rest too. not just chase, not just grind but also breathe. it doesnt mean u told u to stop but just take some relax sit with how far you've come. you've built things people only dream about. let yourself feel proud of that. 🌙
+            </p>
+        </div>
+
+        <div class="book-page" id="page-7">
+            <p style="margin:20px 0;font-size:clamp(0.82rem,2.5vw,0.95rem);line-height:1.8;text-align:center;font-style:italic;">
+                here's to 26 more years of being exactly, unapologetically, wonderfully YOU, ZAIN.<br><br>
+                happy birthday, MY ZAIN ONE AND ONLY ZAIN. 🎂✨<br><br>
+                always rooting for u, TE AMO, SARANGHAE, LOVE YAAAAA ❤️❤️
+            </p>
+        </div>
+
     </div>
     <div class="page-nav">
         <span class="nav-link" id="prevBtn" onclick="changePage(-1)" style="visibility:hidden;">&larr; Back</span>
-        <span id="pageIndicator" style="font-size: 0.7rem;">1 / 7</span>
+        <span style="font-size:0.7rem;color:var(--silver);font-family:var(--font-heading);" id="pageIndicator">1 / 7</span>
         <span class="nav-link" id="nextBtn" onclick="changePage(1)">Next &rarr;</span>
     </div>
     <button class="btn-editorial" onclick="closeModal()">Close</button>
 </div>
 
+<!-- GIFT MODAL -->
 <div class="modal" id="modal-gift">
     <h3>Your Gift</h3>
-    <p style="margin: 20px 0;">Uh oh, it seems one crucial piece is missing... and it still here with me. so if u want it come and get it!</p>
+
+    <!-- Puzzle piece SVG gift box -->
+    <div class="puzzle-box">
+        <svg class="puzzle-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main gift box body -->
+            <rect x="20" y="70" width="120" height="80" rx="6" fill="#CC361E" opacity="0.15" stroke="#CC361E" stroke-width="2"/>
+            <!-- Lid -->
+            <rect x="14" y="58" width="132" height="22" rx="5" fill="#CC361E" opacity="0.25" stroke="#CC361E" stroke-width="2"/>
+            <!-- Ribbon vertical -->
+            <rect x="72" y="58" width="16" height="92" rx="4" fill="#CC361E" opacity="0.5"/>
+            <!-- Ribbon horizontal -->
+            <rect x="14" y="64" width="132" height="10" rx="4" fill="#CC361E" opacity="0.5"/>
+            <!-- Bow left loop -->
+            <ellipse cx="65" cy="52" rx="18" ry="10" fill="#CC361E" opacity="0.7" transform="rotate(-20 65 52)"/>
+            <!-- Bow right loop -->
+            <ellipse cx="95" cy="52" rx="18" ry="10" fill="#CC361E" opacity="0.7" transform="rotate(20 95 52)"/>
+            <!-- Bow center knot -->
+            <circle cx="80" cy="56" r="7" fill="#CC361E"/>
+
+            <!-- Missing puzzle piece cutout (bottom right of box) -->
+            <g opacity="0.9">
+                <!-- Puzzle piece outline -->
+                <path d="M95 110 L95 100 Q100 100 100 95 Q100 88 108 88 Q116 88 116 95 Q116 100 121 100 L121 110 Q116 110 116 115 Q116 122 108 122 Q100 122 100 115 Q100 110 95 110 Z"
+                      fill="none" stroke="#B3B3B3" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <!-- Missing text inside -->
+                <text x="108" y="107" text-anchor="middle" fill="#B3B3B3" font-size="6" font-family="sans-serif">?</text>
+            </g>
+
+            <!-- Stars decoration -->
+            <text x="35" y="100" font-size="12" opacity="0.4">✨</text>
+            <text x="118" y="88" font-size="10" opacity="0.3">⭐</text>
+            <text x="28" y="130" font-size="8" opacity="0.25">✦</text>
+        </svg>
+    </div>
+
+    <p style="margin-bottom:10px;font-size:clamp(0.8rem,2.5vw,0.9rem);">Uh oh, it seems one crucial piece is missing... and it still here with me. so if u want it come and get it! I promise it will never gonna make u disappointed</p>
+    <p style="font-size:clamp(1.2rem,4vw,1.5rem);color:var(--sinopia-red);font-family:var(--font-serif);">See u later!</p>
     <button class="btn-editorial" onclick="closeModal()">Close</button>
 </div>
 
+<!-- =================== MOMENTS FULLSCREEN =================== -->
 <div class="modal-moments" id="modal-moments">
-    <span style="position: absolute; top: 20px; left: 20px; color: white; cursor: pointer; z-index: 100;" onclick="closeMoments()">← Back</span>
-    <div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div class="moments-bg"></div>
+    <div class="floating-words" id="floatingWords"></div>
+    <span class="moments-close" onclick="closeMoments()">← Back</span>
+    <div class="photo-counter" id="photoCounter">1 / 10</div>
+    <div class="polaroid-stage">
         <div class="polaroid-wrapper" id="polaroidWrapper"></div>
     </div>
+    <div class="swipe-hint">tap or swipe to see next →</div>
 </div>
 
 <script>
+    // ============================================================
+    // FOTO — ganti src dengan nama file foto kamu (10 slots)
+    // ============================================================
     const photos = [
-        { src: 'zain kereta.jpeg', caption: 'the beginning of everything ✨' },
-        { src: 'zain fokus.jpeg', caption: 'this one hits different 🌙' },
-        { src: 'zain sleep.jpeg', caption: 'sleeping pil era 🎉' },
-        { src: 'zain masak.jpeg', caption: 'u so talented chef!' },
+        { src: 'zain kereta.jpeg', caption: 'the beginning of everything, I GUESS?? ✨' },
+        { src: 'zain fokus.jpeg', caption: 'this one hits different 🌙 u look so hot when u focus DAMN' },
+        { src: 'zain sleep.jpeg', caption: 'good times, always 🎉, the other kind of sleeping pil' },
+        { src: 'zain masak.jpeg', caption: 'u so talented chef! im rooting on u' },
         { src: 'zain 2.jpeg', caption: 'always & forever 💙' },
-        { src: 'zain korea 2.jpeg', caption: 'yapping king 👑' },
-        { src: 'zain nyetir.jpeg', caption: 'one of my favorites 🤍' },
-        { src: 'zain masker.jpeg', caption: 'handsome face can never be hide 🚀' },
-        { src: 'zain 3.jpeg', caption: 'im so proud of u 🌿' },
-        { src: 'zain 1.jpeg', caption: 'happy birthday, zain 🎂' },
+        { src: 'zain korea 2.jpeg', caption: 'the very talktive guy, i would say a yapping king 👑' },
+        { src: 'zain nyetir.jpeg', caption: 'one of my favorites 🤍 it looks like im in passanger seat waiting for u' },
+        { src: 'zain masker.jpeg', caption: 'look at u, just show half of you face but your handsome face can never be hide 🚀' },
+        { src: 'zain 3.jpeg', caption: 'say to your younger self "im so proud of u"🌿' },
+        { src: 'zain 1.jpeg', caption: 'happy birthday, zain 🎂  hahaha dont even complain about your picture i already ask for your pict but never really give me :p ' },
+    ];
+    // ============================================================
+
+    const floatingTexts = [
+        'happy birthday!','make a wish ✨','you deserve the world',
+        'cheers to 26 🥂','keep shining','dream big always',
+        'you\'re amazing','happy bday zain!','so proud of you',
+        'level 26 unlocked','blessed soul','another year wiser',
+        'here\'s to you','celebrate good times','stay golden ✨',
+        'love & light','congrats!','you made it!',
+        'the odyssey continues','what a journey','birthday boy 🎂',
     ];
 
-    let currentMsgPage = 1;
-    const totalPages = 7;
-    let currentPhotoIndex = 0;
+    /* ---- AUDIO ---- */
+    const bgMusic  = document.getElementById('bgMusic');
+    const msgMusic = document.getElementById('msgMusic');
 
-    function showGateway() { document.getElementById('landing').style.display = 'none'; document.getElementById('gateway').style.display = 'flex'; }
+    /* ---- TRAIT BADGES ---- */
+    function toggleTrait(el) {
+        const wasActive = el.classList.contains('active-trait');
+        document.querySelectorAll('.trait-badge').forEach(b => b.classList.remove('active-trait'));
+        if (!wasActive) el.classList.add('active-trait');
+    }
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.trait-badge')) {
+            document.querySelectorAll('.trait-badge').forEach(b => b.classList.remove('active-trait'));
+        }
+    });
+
+    /* ---- ACHIEVEMENT CAROUSEL ---- */
+    let achIndex = 0;
+    const achCards = document.querySelectorAll('.ach-card');
+    const achNavEl = document.getElementById('achNav');
+    const achTrack = document.getElementById('achTrack');
+
+    function getCardW() {
+        const card = achTrack.querySelector('.ach-card');
+        if (!card) return 234;
+        return card.offsetWidth + 14;
+    }
+
+    achCards.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'ach-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => scrollAch(i);
+        achNavEl.appendChild(dot);
+    });
+
+    function scrollAch(idx) {
+        achIndex = idx;
+        achTrack.style.transform = `translateX(-${idx * getCardW()}px)`;
+        document.querySelectorAll('.ach-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    setInterval(() => scrollAch((achIndex + 1) % achCards.length), 3000);
+
+    /* ---- MOMENTS ---- */
+    let currentCard = 0;
+    let totalCards  = photos.length;
+
+    function buildFloatingWords() {
+        const container = document.getElementById('floatingWords');
+        container.innerHTML = '';
+        const sizes  = [1, 1.2, 1.5, 1.8, 2.2, 2.8, 3.5];
+        const angles = [-25, -15, -8, 0, 8, 15, 25];
+        floatingTexts.forEach((text, i) => {
+            const el = document.createElement('span');
+            el.className = 'fw';
+            el.textContent = text;
+            el.style.fontSize  = sizes[i % sizes.length] + 'rem';
+            el.style.transform = `rotate(${angles[i % angles.length]}deg)`;
+            el.style.top  = (5 + (i * 13.7) % 88) + '%';
+            el.style.left = ((i * 17.3) % 90) + '%';
+            container.appendChild(el);
+        });
+    }
+
+    function buildPolaroids() {
+        const wrapper = document.getElementById('polaroidWrapper');
+        wrapper.innerHTML = '';
+        totalCards = photos.length;
+        photos.forEach((photo, i) => {
+            const card = document.createElement('div');
+            card.className = 'polaroid-card';
+            card.dataset.index = i;
+            const photoDiv = document.createElement('div');
+            photoDiv.className = 'polaroid-photo';
+            if (photo.src) {
+                const img = document.createElement('img');
+                img.src = photo.src; img.alt = photo.caption;
+                photoDiv.appendChild(img);
+            } else {
+                const ph = document.createElement('div');
+                ph.className = 'polaroid-photo-placeholder';
+                ph.textContent = 'Add your photo here';
+                photoDiv.appendChild(ph);
+            }
+            const caption = document.createElement('div');
+            caption.className = 'polaroid-caption';
+            caption.textContent = photo.caption;
+            card.appendChild(photoDiv);
+            card.appendChild(caption);
+            card.addEventListener('click', nextCard);
+            wrapper.appendChild(card);
+        });
+        updateCardClasses(); updateCounter();
+    }
+
+    function updateCardClasses() {
+        document.querySelectorAll('.polaroid-card').forEach((card, i) => {
+            card.classList.remove('active','below-1','below-2','below-3','hidden');
+            const diff = i - currentCard;
+            if (diff === 0)      card.classList.add('active');
+            else if (diff === 1) card.classList.add('below-1');
+            else if (diff === 2) card.classList.add('below-2');
+            else if (diff === 3) card.classList.add('below-3');
+            else                 card.classList.add('hidden');
+        });
+    }
+
+    function updateCounter() {
+        document.getElementById('photoCounter').textContent = `${currentCard + 1} / ${totalCards}`;
+    }
+
+    function nextCard() {
+        if (currentCard >= totalCards - 1) return;
+        const cards  = document.querySelectorAll('.polaroid-card');
+        const active = cards[currentCard];
+        active.classList.add('swiping-out');
+        setTimeout(() => {
+            active.classList.remove('active','swiping-out');
+            active.classList.add('hidden');
+            currentCard++;
+            updateCardClasses(); updateCounter();
+        }, 420);
+    }
+
+    function openMoments() {
+        bgMusic.pause();
+        msgMusic.currentTime = 0;
+        msgMusic.play().catch(() => {});
+        buildFloatingWords(); buildPolaroids();
+        currentCard = 0; updateCardClasses(); updateCounter();
+        document.getElementById('modal-moments').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMoments() {
+        document.getElementById('modal-moments').style.display = 'none';
+        document.body.style.overflow = '';
+        msgMusic.pause();
+        msgMusic.currentTime = 0;
+        bgMusic.play().catch(() => {});
+    }
+
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+    document.addEventListener('touchend', e => {
+        if (document.getElementById('modal-moments').style.display !== 'block') return;
+        if (touchStartX - e.changedTouches[0].clientX > 40) nextCard();
+    }, {passive: true});
+
+    /* ---- CORE FUNCTIONS ---- */
+    let currentMsgPage = 1;
+    const totalPages   = 7;
+
+    function showGateway() {
+        document.getElementById('landing').style.display = 'none';
+        document.getElementById('gateway').style.display = 'flex';
+    }
 
     function checkPass() {
         const pass = document.getElementById('passInput').value;
         if (pass === '160426') {
-            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#CC361E','#224766','#ffffff','#2d4a22'] });
             document.getElementById('gateway').style.display = 'none';
             document.getElementById('main-page').style.display = 'block';
-            document.getElementById('bgMusic').play();
-        } else { alert('Wrong code!'); }
+            bgMusic.play().catch(() => {});
+        } else {
+            alert('Wrong code!, hint: u old now ewh');
+            document.getElementById('hintText').style.display = 'block';
+        }
     }
-
-    function toggleTrait(el) { el.classList.toggle('active-trait'); }
 
     function changePage(step) {
         document.getElementById(`page-${currentMsgPage}`).classList.remove('active');
@@ -467,24 +1106,29 @@
         document.getElementById('nextBtn').style.visibility = currentMsgPage === totalPages ? 'hidden' : 'visible';
     }
 
-    function openMoments() {
-        document.getElementById('modal-moments').style.display = 'block';
-        const wrapper = document.getElementById('polaroidWrapper');
-        wrapper.innerHTML = '';
-        photos.forEach((photo, i) => {
-            const card = document.createElement('div');
-            card.className = 'polaroid-card';
-            card.style.zIndex = photos.length - i;
-            card.innerHTML = `<img src="${photo.src}" style="width:100%; height:230px; object-fit:cover; margin-bottom:10px;"><p style="font-family:var(--font-handwritten); text-align:center;">${photo.caption}</p>`;
-            card.onclick = function() { this.classList.add('swiping-out'); };
-            wrapper.appendChild(card);
-        });
+    function showModal(type) {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('modal-' + type).style.display = 'block';
+        if (type === 'message') {
+            bgMusic.pause();
+            msgMusic.currentTime = 0;
+            msgMusic.play().catch(() => {});
+            currentMsgPage = 1;
+            document.querySelectorAll('.book-page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-1').classList.add('active');
+            document.getElementById('pageIndicator').innerText = `1 / ${totalPages}`;
+            document.getElementById('prevBtn').style.visibility = 'hidden';
+            document.getElementById('nextBtn').style.visibility = 'visible';
+        }
     }
 
-    function closeMoments() { document.getElementById('modal-moments').style.display = 'none'; }
-    function showModal(type) { document.getElementById('overlay').style.display = 'block'; document.getElementById('modal-' + type).style.display = 'block'; }
-    function closeModal() { document.getElementById('overlay').style.display = 'none'; document.querySelectorAll('.modal').forEach(m => m.style.display = 'none'); }
+    function closeModal() {
+        document.getElementById('overlay').style.display = 'none';
+        document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+        msgMusic.pause();
+        msgMusic.currentTime = 0;
+        bgMusic.play().catch(() => {});
+    }
 </script>
-
 </body>
 </html>
